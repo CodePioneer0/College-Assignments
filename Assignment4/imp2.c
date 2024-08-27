@@ -15,8 +15,8 @@ queue* createIntegerQueue(int queueSize){
     if(q->arr==NULL){
         return NULL;
     }
-    q->rear = queueSize - 1;
-    q->front = queueSize - 1;
+    q->rear  = - 1;
+    q->front = - 1;
     return q;
 }
 int isIntegerQueueFull(queue *q){
@@ -26,26 +26,36 @@ int isIntegerQueueFull(queue *q){
     return 0;
 }
 int isIntegerQueueEmpty(queue *q){
-    if(q->front==q->rear){
+    if(q->front==-1 && q->rear==-1){
         return 1;
     }
     return 0;
 }
 int enqueuqInteger(queue *q,int d){
-    q->rear = (q->rear+1)%q->qSize;
-    if(q->rear==q->front){
-        q->rear = (q->rear-1)%q->qSize;
+    if(q->front==-1 && q->rear==-1){
+        q->front=0;
+        q->rear=0;
+        q->arr[q->rear]=d;
+        return 1;
+    }else if((q->rear+1)%q->qSize==q->front){
         return 0;
     }
+    q->rear=(q->rear+1)%q->qSize;
     q->arr[q->rear]=d;
     return 1;
 }
 int dequeueInteger(queue *q,int *d){
-    if(isIntegerQueueEmpty(q)){
+    if(q->front==-1 && q->rear==-1){
         return 0;
     }
-    q->front = (q->front+1)%q->qSize;
-    *d = q->arr[q->front];
+    else if(q->rear==q->front){
+        *d=q->arr[q->front];
+        q->front=-1;
+        q->rear=-1;
+        return 1;
+    }
+    *d=q->arr[q->front];
+    q->front=(q->front+1)%q->qSize;
     return 1;
 }
 int freeIntegerQueue(queue *q){
@@ -62,24 +72,23 @@ void displayQueue(queue *q){
         return;
     }
     printf("Queue : \n");
-    printf("Index : Element\n");
-    int s = (q->front+1)%q->qSize;
-    int e = (q->rear)%q->qSize;
-    for(int i=s;;i=(i+1)%q->qSize){
-        printf("  %d   :   %d\n",i,q->arr[i]);
-        if(i==e) break;
+    int i=q->front;
+    while(i!=q->rear){
+        printf("%d\t",q->arr[i]);
+        i = (i+1)%q->qSize;
     }
+    printf("%d",q->arr[q->rear]);
     printf("\n");
 }
 int main(){
     int mx;
     printf("Enter the Queue size : ");
     scanf("%d",&mx);
-    if(createIntegerQueue(mx+1)==NULL){
+    if(createIntegerQueue(mx)==NULL){
         printf("Queue Creation Failure!\n");
         return 1;
     }
-    queue q = *createIntegerQueue(mx+1);
+    queue q = *createIntegerQueue(mx);
 
 
     printf("Enter the following options for Queue operations!\n");

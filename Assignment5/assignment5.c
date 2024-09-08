@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include <stdlib.h>
-
+#include<time.h>
 struct listNode{
     int data;
     struct listNode *next; 
@@ -64,20 +64,12 @@ int isPresentListNodeSorted(struct listNode *start,int elem){
 
 struct listNode *deleteListNodeSorted(struct listNode *start,int elem){
     if(start==NULL) return NULL;
-    //One node case
-    if(start->next==NULL){
-        if(start->data==elem){
-            free(start);
-            return NULL;
-        }
-        printf("Element value %d not found\n",elem);
-        return start;
-    }
+    
     struct listNode *head = start;
     if(start->data==elem){
-        head=head->next;
-        free(start);
-        return head;
+        start=start->next;
+        free(head);
+        return start;
     }
     struct listNode *prev=NULL;
     while(start && (start->data!=elem)){
@@ -103,23 +95,138 @@ void printLinkedList(struct listNode *start){
     printf("NULL\n\n");
 }
 
+void freeListNodeSorted(struct listNode *start){
+    struct listNode *prev = NULL;
+    while(start){
+        prev = start;
+        start=start->next;
+        free(prev);
+    }
+}
+struct listNode *reverseListNodeSorted(struct listNode *start){
+    struct listNode *prev=NULL;
+    struct listNode *temp = start;
+    struct listNode *front=NULL;
+    while(temp){
+        front = temp->next;
+        temp->next=prev;
+        prev = temp;
+        temp = front;
+    }
+    return prev;
+}
 
-int main(){
-    struct listNode *head=NULL;
-    head=addListNodeSorted(head,1);
-    head=addListNodeSorted(head,0);
-    head=addListNodeSorted(head,8);
-    head=addListNodeSorted(head,4);
-    head=addListNodeSorted(head,5);
-    printLinkedList(head);
-    if(isPresentListNodeSorted(head,8)){
-        printf("Present!\n");
+void updateListNode(struct listNode *start){
+    srand(time(NULL));
+    struct listNode *head = start;
+    while(head){
+        int d=(rand()%9)+1;
+        head->data=head->data+d;
+        head=head->next;
+    }   
+}
+
+struct listNode *mergeListNodeSorted(struct listNode *start1,struct listNode *start2){
+    if(!start1) return start2;
+    if(!start2) return start1;
+    struct listNode *head = NULL;
+    struct listNode *temp = NULL; 
+    if(start1->data>=start2->data){
+        head = start1;
+        temp =start1;
+        start1=start1->next;
     }
     else{
-        printf("Absent!\n");
+        head = start2;
+        temp = start2;
+        start2 = start2->next;
     }
-    head=deleteListNodeSorted(head,8);
-    head=deleteListNodeSorted(head,4);
+
+    while(start1 && start2){
+        if(start1->data>=start2->data){
+            temp->next=start1;
+            start1=start1->next;
+        }
+        else{
+            temp->next = start2;
+            start2=start2->next;
+        }
+        temp = temp->next;
+    }
+    if(start1){
+        temp->next = start1;
+    }
+    else{
+        temp->next = start2;
+    }
+    return head;
+}
+
+struct listNode *sortListNode(struct listNode *start){
+    if(start == NULL || start->next==NULL){
+        return start;
+    }
+    struct listNode *dummyNode=CreateSingleNode(-1);
+    while(start){
+        struct listNode *temp = dummyNode;
+        struct listNode *next = start->next;
+        while(temp->next && temp->next->data>start->data){
+            temp=temp->next;
+        }
+        start->next = temp->next;
+        temp->next = start;
+        start = next;
+    }
+    return dummyNode->next;
+}
+
+
+
+int main(){
+    struct listNode *head1=NULL;
+    struct listNode *head2=NULL;
+    int n=5;
+    printf("Write five elements for two linked list !\n");
+    printf("First Linked list : \n");
+    for(int i=0;i<n;i++){
+        int x;
+        printf("Enter the %dth number :",i+1);
+        scanf("%d",&x);
+        head1=addListNodeSorted(head1,x);
+    }
+    printf("Second Linked list : \n");
+    for(int i=0;i<n;i++){
+        int x;
+        printf("Enter the %dth number :",i+1);
+        scanf("%d",&x);
+        head2=addListNodeSorted(head2,x);
+    }
+    printLinkedList(head1);
+    printLinkedList(head2);
+    struct listNode *head = mergeListNodeSorted(head1,head2);
+    printf("This is the new merged list : \n");
+    printLinkedList(head);
+    printf("Write a number to delete : ");
+    scanf("%d",&n);
+    head=deleteListNodeSorted(head,n);
+    printLinkedList(head);
+    printf("The number %d got deleted \n",n);
+    printf("Write a number to be found in the list : " );
+    scanf("%d",&n);
+    if(isPresentListNodeSorted(head,n)){
+        printf("The number %d is present\n",n);
+    }
+    else{
+        printf("The number is absent in the list\n");
+    }
+    printf("The reversed linked list :\n");
+    head = reverseListNodeSorted(head);
+    printLinkedList(head);
+    updateListNode(head);
+    printf("This is the updated linked list :\n");
+    printLinkedList(head);
+    printf("Resorting the linked in descending order :\n");
+    head=sortListNode(head);
     printLinkedList(head);
     return 0;
 }

@@ -57,8 +57,6 @@ void displayStack(myStack *st){
         printf("%d\n",st->element[i]);
     }
 }
-
-
 int main(){
     myStack st;
     int maxSize;

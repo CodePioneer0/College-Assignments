@@ -3,8 +3,7 @@
 #include <string.h>
 #define max_address 100
 #define max_name 50
-typedef struct Student
-{
+typedef struct Student{
     char *name;
     int roll;
     char telephone[11];

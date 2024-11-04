@@ -38,20 +38,26 @@ void printLinkedList(largeIntNode *start)
     printf("The list contains :");
     while (start)
     {
-        printf("%c ", start->digit);
+        printf("%c", start->digit);
         start = start->next;
     }
     printf("\n\n");
 }
-void hexaLinkedList(largeIntNode *start){
-    printf("The list contains :   ");
-    printf("0x");
-    while (start){
-        printf("%X", start->digit-'0');
-        start = start->next;
+unsigned long long toDecimal(largeIntNode* head) {
+    largeIntNode* current = head;
+    unsigned long long result = 0;
+    while (current) {
+        result = result * 10 + (current->digit - '0');
+        current = current->next;
     }
-    printf("\n\n");
+    return result;
 }
+
+void printHexadecimal(largeIntNode* head) {
+    unsigned long long ValueInDecimal = toDecimal(head);
+    printf("Hexadecimal Form is: %llX\n", ValueInDecimal);
+}
+
 
 largeIntNode *addLargeInts(largeIntNode *head1, largeIntNode *head2){
     if (head1 == NULL || head2 == NULL)
@@ -131,32 +137,17 @@ largeIntNode *reverseListNodeSorted(largeIntNode *start){
     return prev;
 }
 
-int main()
-{
-    largeIntNode *add = NULL;
-    largeIntNode *sub = NULL;
+int main(){
     char a[100];
-    char b[100];
     printf("Enter the number 1:\n");
     largeIntNode *head1 = NULL;
     scanf("%s", a);
-    printf("Enter the number 2:\n");
-    largeIntNode *head2 = NULL;
-    scanf("%s", b);
     int n = strlen(a);
-    int m = strlen(b);
     for (int i = n - 1; i >= 0; i--){
         head1 = representLargeInt(head1, a[i]);
     }
-    for (int i = m - 1; i >= 0; i--){
-        head2 = representLargeInt(head2, b[i]);
-    }
-    add = addLargeInts(head1, head2);
-    add=reverseListNodeSorted(add);
-    printLinkedList(add);
-
-    sub = substractLargeInts(head1,head2);
-    sub=reverseListNodeSorted(sub);
-    printLinkedList(sub);
+    0
+    printLinkedList(head1);
+    printHexadecimal(head1);
     return 0;
 }

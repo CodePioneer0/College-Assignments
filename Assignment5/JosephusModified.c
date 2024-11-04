@@ -29,7 +29,7 @@ struct person* createCircle(int N) {
     return head;
 }
 
-void playEnhancedGame(int N) {
+void playGame(int N) {
     struct person *circle = createCircle(N);
     struct person *current = circle;
     
@@ -37,17 +37,17 @@ void playEnhancedGame(int N) {
     
     while (N > 1) {
         int S = rand() % 20 - 10;
-        int absS = abs(S);
+        int abS = abs(S);
         
-        printf("Skipping %d people ", absS);
+        printf("Skipping %d people ", abS);
         if (S >= 0) {
             printf("(clockwise) : \n");
-            for (int i = 0; i < absS; i++) {
+            for (int i = 0; i < abS; i++) {
                 current = current->next;
             }
         } else {
             printf("(anticlockwise) :\n");
-            for (int i = 0; i < absS; i++) {
+            for (int i = 0; i < abS; i++) {
                 current = current->prev;
             }
         }
@@ -70,7 +70,7 @@ int main() {
     printf("Enter the number of people: ");
     scanf("%d", &N);
     
-    playEnhancedGame(N);
+    playGame(N);
     
     return 0;
 }

@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <math.h>
-struct listNode{
+
+struct listNode {
     int data;
     struct listNode *next;
 };
@@ -12,8 +12,8 @@ struct MemoryPool {
     int totalNodes;
     int availableNodes;
 };
-struct MemoryPool pool;
 
+struct MemoryPool pool;
 
 int releaseMemoryPoolNodes() {
     if (pool.head == NULL) {
@@ -21,7 +21,7 @@ int releaseMemoryPoolNodes() {
     }
 
     struct listNode *current = pool.head;
-    struct listNode *next=NULL;
+    struct listNode *next = NULL;
     int nodesFreed = 0;
 
     do {
@@ -29,11 +29,11 @@ int releaseMemoryPoolNodes() {
         free(current);
         current = next;
         nodesFreed++;
-    } while (current != pool.head && current != NULL);
+    } while (current != pool.head);
 
     int leaks = pool.totalNodes - nodesFreed;
     if (leaks > 0) {
-        printf("Memory leak detected: %d nodes were not released.\n", leaks);
+        printf("Memory leak detected: %d\n", leaks);
     }
 
     pool.head = NULL;
@@ -42,6 +42,7 @@ int releaseMemoryPoolNodes() {
 
     return leaks;
 }
+
 int createMemoryPoolNodes(int numNodes) {
     if (numNodes <= 0) {
         return 0;
@@ -55,7 +56,6 @@ int createMemoryPoolNodes(int numNodes) {
     for (int i = 0; i < numNodes; i++) {
         struct listNode *newNode = (struct listNode *)malloc(sizeof(struct listNode));
         if (newNode == NULL) {
-            releaseMemoryPoolNodes();
             return 0;
         }
         if (pool.head == NULL) {
@@ -65,7 +65,6 @@ int createMemoryPoolNodes(int numNodes) {
             tail->next = newNode;
             tail = newNode;
         }
-        
     }
     if (tail != NULL) {
         tail->next = pool.head;
@@ -77,13 +76,15 @@ struct listNode *getNode() {
     if (pool.availableNodes == 0) {
         return NULL;
     }
+
     struct listNode *node = pool.head;
-    pool.head = node->next;
+    pool.head = pool.head->next;
+    node->next = NULL;
     pool.availableNodes--;
 
-    node->next = NULL;
     return node;
 }
+
 void releaseNode(struct listNode *node) {
     if (node == NULL) {
         return;
@@ -94,11 +95,9 @@ void releaseNode(struct listNode *node) {
     pool.availableNodes++;
 }
 
-
-
 struct listNode *deleteListNodeSorted(struct listNode *start, int elem) {
     if (start == NULL) return NULL;
-    
+
     struct listNode *head = start;
     if (start->data == elem) {
         start = start->next;
@@ -119,19 +118,16 @@ struct listNode *deleteListNodeSorted(struct listNode *start, int elem) {
 
     return head;
 }
-void printLinkedList(struct listNode *start){
-    if (start == NULL) {
-        printf("The list is empty\n");
-        return;
-    }
+
+void printLinkedList(struct listNode *start) {
     printf("The list contains: ");
-    struct listNode *current = start;
-    do {
-        printf("%d -> ", current->data);
-        current = current->next;
-    } while (current != start && current != NULL);
-    printf("(back to start)\n\n");
+    while (start) {
+        printf("%d -> ", start->data);
+        start = start->next;
+    }
+    printf("NULL\n\n");
 }
+
 void freeListNodeSorted(struct listNode *start) {
     struct listNode *prev = NULL;
     while (start) {
@@ -140,35 +136,39 @@ void freeListNodeSorted(struct listNode *start) {
         releaseNode(prev);
     }
 }
-struct listNode *addListNodeSorted(struct listNode *start, int elem){
+
+struct listNode *addListNodeSorted(struct listNode *start, int elem) {
     struct listNode *temp = getNode();
     if (temp == NULL) {
-        printf("Memory pool is empty. Cannot add new node.\n");
+        printf("The Pool is Empty :\n");
         return start;
     }
     temp->data = elem;
+    temp->next = NULL;
 
-    if (start == NULL) {
-        temp->next = temp;  
+    // No element
+    if (start == NULL) return temp;
+
+    // Single Element or new head
+    if (start->data >= elem) {
+        temp->next = start;
         return temp;
     }
 
-    if (start->data <= elem) {
-        temp->next = start->next;
-        start->next = temp;
-        return start;
+    // General case
+    struct listNode *head = start;
+    struct listNode *prev = NULL;
+    while (start && start->data < elem) {
+        prev = start;
+        start = start->next;
     }
-
-    struct listNode *current = start;
-    while (current->next != start && current->next->data > elem) {
-        current = current->next;
-    }
-    temp->next = current->next;
-    current->next = temp;
-    return (temp->data < start->data) ? temp : start;
+    temp->next = prev->next;
+    prev->next = temp;
+    return head;
 }
+
 int main() {
-     if (createMemoryPoolNodes(5)) {
+    if (createMemoryPoolNodes(10)) {
         printf("MemoryPool Created!\n");
     } else {
         printf("Failed to create MemoryPool!\n");
@@ -184,17 +184,15 @@ int main() {
 
     printLinkedList(head);
 
-    head = addListNodeSorted(head, 6);
+    head = deleteListNodeSorted(head,4);
 
     printLinkedList(head);
 
     freeListNodeSorted(head);
     int leaks = releaseMemoryPoolNodes();
     if (leaks > 0) {
-        printf("Warning: %d nodes were not properly released\n", leaks);
+        printf("Warning: Memory Leak Detected! : %d\n", leaks);
     }
-
-    
 
     return 0;
 }

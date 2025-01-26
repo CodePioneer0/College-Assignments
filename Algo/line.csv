@@ -1,7 +1,0 @@
-Algorithm,Median_Swaps,Median_Comparisons,Median_Time_s
-BubbleSort,249638,499500,1816
-InsertionSort,249638,249638,1246
-SelectionSort,999,499500,678
-MergeSort,9976,8708,81
-QuickSort,2388,11365,61
-HeapSort,9081,11684,123

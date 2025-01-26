@@ -21,7 +21,7 @@ student ReadStudentData(){
     return s;
 }
 void PrintStudentData(int n,student *&arr){
-    cout<<"Student details :\n\n";
+    cout<<"Student Details :\n\n";
     for(int i=0;i<n;i++){
         cout<<"Name : "<<arr[i].name<<endl;
         cout<<"Age : "<<arr[i].age<<endl;

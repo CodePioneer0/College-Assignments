@@ -151,17 +151,15 @@ int median(vector<int>& v) {
 int main() {
     srand((unsigned) time(0));
 
-    // Varying sizes
-    vector<int> sizes = {100,500,1000,1500,2000,2500,3000,3500,4000,4500,5000};
-    // Prepare new CSV for all sizes
+    vector<int> sizes = {50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800};
+    
     ofstream outfile("metrics_varying.csv");
     outfile << "Algorithm,Input_Size,Median_Swaps,Median_Comparisons,Median_Time_microseconds\n";
     outfile.close();
 
-    // Number of repeated tests per size
     const int TESTS = 250;
 
-    // Collect stats for each size
+    
     for (auto size : sizes) {
         vector<int> bubble_swaps, bubble_comparisons, bubble_times;
         vector<int> insertion_swaps, insertion_comparisons, insertion_times;
@@ -248,7 +246,7 @@ int main() {
             }
         }
 
-        // Compute medians
+        //medians
         int bs  = median(bubble_swaps);
         int bc  = median(bubble_comparisons);
         int bt  = median(bubble_times);

@@ -1,6 +1,8 @@
-#include <iostream>
-#include <random>
+#include<iostream>
+#include<random>
 using namespace std;
+#include<chrono>
+using namespace std::chrono;
 int exchanges = 0;
 
 void insertionSort(int arr[],int n){
@@ -111,7 +113,7 @@ void merge(int arr[],int low,int mid,int high){
         int i = 0;
         while(left<=mid && right<=high){
                 if(arr[left]<=arr[right]){
-                        exchanges++;
+                       exchanges++;
                        temp[i]=arr[left];
                        left++;
                        i++; 
@@ -174,55 +176,71 @@ void quickSort(int arr[], int low, int high) {
         quickSort(arr, pi + 1, high);
     }
 }
+int avg(int sum,int n){
+        return sum/n;
+}
+void generate(int arr[],int n){
+        for(int i=0;i<n;i++){
+                arr[i] = rand()%100000;
+        }
+}
 int main(){
-        int n = 20;
-        int a[20]={1 ,16, 12, 26 ,25 ,35 ,33, 58 ,45, 42, 56, 67, 83, 75, 74, 86, 81, 88, 99, 95};
-        int b[20] = {1 ,17, 21, 42, 24, 27, 32, 35, 45, 47, 57, 23, 66, 69, 70, 76, 87, 85, 95, 99};
-        int c[20]={22 ,20 ,81 ,38, 95, 84, 99, 12, 79, 44, 26, 87, 96, 10, 48, 80, 1, 31, 16, 92};
-        
-        {
-                int arr[20];
-                copy(a,a+n,arr);
-                insertionSortNoSwap(arr,n);
-                cout<<"Insertion Sort No Swap: "<<"Exchanges: "<<exchanges<<"\n";
-                
+    int n = 10000;
+    int arr[10000];
+    {
+        int a[10000];
+        copy(arr,arr+n,a);
+        generate(a,n);
+        int sum = 0;
+        for(int i=0;i<5;i++){
+            auto start = high_resolution_clock::now();
+            insertionSortNoSwap(a,n);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            sum+=duration.count();    
         }
-        {
-                int arr[20];
-                copy(a,a+n,arr);
-                exchanges = 0;
-                bubbleSortNoSwap(arr,n);
-                cout<<"Bubble Sort No Swap: "<<"Exchanges: "<<exchanges<<"\n";
-                
+        cout<<"Insertion Sort without Swaps: "<<avg(sum,5)<<" microseconds"<<endl;
+    }
+    {
+        int a[10000];
+        copy(arr,arr+n,a);
+        int sum = 0;
+        for(int i=0;i<5;i++){
+            generate(a,n);
+            auto start = high_resolution_clock::now();
+            bubbleSortRangeLimited(a,n);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            sum+=duration.count();    
         }
-        {
-                int arr[20];
-                copy(a,a+n,arr);
-                exchanges = 0;
-                bubbleSortflagged(arr,n);
-                cout<<"Bubble Sort Flagged: "<<"Exchanges: "<<exchanges<<"\n";
-                
+        cout<<"Bubble sort range limited: "<<avg(sum,5)<<" microseconds"<<endl;
+    }
+    {
+        int a[10000];
+        copy(arr,arr+n,a);
+        int sum = 0;
+        for(int i=0;i<5;i++){
+            generate(a,n);    
+            auto start = high_resolution_clock::now();
+            mergeSort(a,0,n-1);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            sum+=duration.count();    
         }
-        {
-                int arr[20];
-                copy(a,a+n,arr);
-                exchanges = 0;
-                bubbleSortRangeLimited(arr,n);
-                cout<<"Bubble Sort Range Limited: "<<"Exchanges: "<<exchanges<<"\n";
+        cout<<"Merge Sort: "<<avg(sum,5)<<" microseconds"<<endl;
+    }
+    {
+        int a[10000];
+        copy(arr,arr+n,a);
+        int sum = 0;
+        for(int i=0;i<5;i++){
+            generate(a,n);    
+            auto start = high_resolution_clock::now();
+            quickSort(a,0,n-1);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            sum+=duration.count();    
         }
-        {
-                int arr[20];
-                copy(a,a+n,arr);
-                exchanges = 0;
-                mergeSort(arr,0,n-1);       
-                cout<<"Merge Sort: "<<"Exchanges: "<<exchanges<<"\n";
-        }
-        {
-                int arr[20];
-                copy(a,a+n,arr);
-                exchanges = 0;
-                quickSort(arr,0,n-1);
-                cout<<"Quick Sort: "<<"Exchanges: "<<exchanges<<"\n";
-        }
-        cout<<"\n";
+        cout<<"Quick Sort: "<<avg(sum,5)<<" microseconds"<<endl;
+    }
 }

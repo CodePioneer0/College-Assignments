@@ -1,4 +1,5 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<string>
 using namespace std;
 typedef struct student{
     string name;
@@ -29,15 +30,4 @@ void PrintStudentData(int n,student *&arr){
         cout<<"Year : "<<arr[i].year<<endl;
     }
     
-}
-int main(){
-    int n;cin>>n;
-    student *arr = new student[n];
-    cin.ignore();
-    for(int i=0;i<n;i++){
-        student s;
-        s = ReadStudentData();
-        arr[i] = s;
-    }
-    PrintStudentData(n,arr);
 }

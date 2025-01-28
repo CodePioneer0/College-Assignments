@@ -11,3 +11,10 @@ void insertionSort(T arr[],int n){
         }
 }
 
+int main(){
+        float arr[] = {4.2,3.1,1.7,2.2,7.8};
+        insertionSort(arr,5);
+        for(int i=0;i<5;i++){
+                cout<<arr[i]<<" ";
+        }
+}

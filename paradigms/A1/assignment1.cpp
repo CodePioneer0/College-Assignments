@@ -174,6 +174,12 @@ void quickSort(int arr[], int low, int high) {
         quickSort(arr, pi + 1, high);
     }
 }
+void printArr(int arr[],int n){
+        for(int i=9;i<n;i++){
+                cout<<arr[i]<<" ";
+        }
+        cout<<endl;
+}
 int main(){
         int n = 20;
         int a[20]={1 ,16, 12, 26 ,25 ,35 ,33, 58 ,45, 42, 56, 67, 83, 75, 74, 86, 81, 88, 99, 95};
@@ -185,6 +191,8 @@ int main(){
                 copy(a,a+n,arr);
                 insertionSortNoSwap(arr,n);
                 cout<<"Insertion Sort No Swap: "<<"Exchanges: "<<exchanges<<"\n";
+                printArr(arr,20);
+
                 
         }
         {
@@ -193,6 +201,7 @@ int main(){
                 exchanges = 0;
                 bubbleSortNoSwap(arr,n);
                 cout<<"Bubble Sort No Swap: "<<"Exchanges: "<<exchanges<<"\n";
+                printArr(arr,20);
                 
         }
         {
@@ -201,6 +210,7 @@ int main(){
                 exchanges = 0;
                 bubbleSortflagged(arr,n);
                 cout<<"Bubble Sort Flagged: "<<"Exchanges: "<<exchanges<<"\n";
+                printArr(arr,20);
                 
         }
         {
@@ -209,6 +219,7 @@ int main(){
                 exchanges = 0;
                 bubbleSortRangeLimited(arr,n);
                 cout<<"Bubble Sort Range Limited: "<<"Exchanges: "<<exchanges<<"\n";
+                printArr(arr,20);
         }
         {
                 int arr[20];
@@ -216,6 +227,7 @@ int main(){
                 exchanges = 0;
                 mergeSort(arr,0,n-1);       
                 cout<<"Merge Sort: "<<"Exchanges: "<<exchanges<<"\n";
+                printArr(arr,20);
         }
         {
                 int arr[20];
@@ -223,6 +235,7 @@ int main(){
                 exchanges = 0;
                 quickSort(arr,0,n-1);
                 cout<<"Quick Sort: "<<"Exchanges: "<<exchanges<<"\n";
+                printArr(arr,20);
         }
         cout<<"\n";
 }

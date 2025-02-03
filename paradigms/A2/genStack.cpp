@@ -1,84 +1,206 @@
-#include <iostream>
-using namespace std;
-
-#define MAX_SIZE 100
-
-template <typename T>
-struct mystack {
-    int size;
-    int count;
-    T* arr;
-};
-
-
-inline int getMaxSize() {   return MAX_SIZE; }
-
-template <typename T>
-inline int currentSize(mystack<T>& st) { return st.count + 1; }
-
-template <typename T>
-inline bool isEmpty(mystack<T>& st) { return st.count == -1; }
-
-template <typename T>
-inline bool isFull(mystack<T>& st) { return st.count == st.size - 1; }
-
-template <typename T>
-int inflate(mystack<T>& st) {
-    cout << "Inflating the stack\n";
-    if (st.size == MAX_SIZE) {
-        cout << "Stack has reached maximum size.\n";
-        return 0;
-    }
-
-    int newSize = st.size + 1;
-    T* temp = new T[newSize];
-    if (!temp) return 0;
-    for (int i = 0; i <= st.count; i++) {
-        temp[i] = st.arr[i];
-    }
-    delete[] st.arr;
-    st.arr = temp;
-    st.size = newSize;
-    return 1;
-}
-
-template <typename T>
-int initialize(mystack<T>& st, int stackSize) {
-    if (stackSize > getMaxSize()) return 0;
-    st.size = stackSize;
-    st.count = -1;
-    st.arr = new T[stackSize];
-    return st.arr != nullptr;
-}
-
-template <typename T>
-int push(mystack<T>& st, T d) {
-    if (isFull(st)) {
-        if (!inflate(st)) {
-            return 0;
-        }
-    }
-    st.arr[++st.count] = d;
-    return 1;
-}
-
-template <typename T>
-int pop(mystack<T>& st, T& d) {
-    if (isEmpty(st)) {
-        return 0;
-    }
-    d = st.arr[st.count--];
-    return 1;
-}
-
-template <typename T>
-void printStack(mystack<T>& st) {
-    for (int i = 0; i <= st.count; i++) {
-        cout << st.arr[i] << " ";
-    }
-    cout << endl;
-}
+#include "templateStack.h"
 
 int main() {
-    
+    int choice, stackSize;
+
+    cout << "Choose data type for stack:\n";
+    cout << "1. Integer\n2. Float\n3. Struct (Name, Age)\n4. String\n";
+    cout << "Enter your choice: ";
+    cin >> choice;
+
+    switch (choice) {
+        case 1: {
+            mystack<int> stack;
+            int value;
+            cout << "Enter initial stack size (max " << getMaxSize() << "): ";
+            cin >> stackSize;
+
+            if (!initialize(stack, stackSize)) {
+                cout << "Stack initialization failed!\n";
+                return 1;
+            }
+
+            while (true) {
+                cout << "\nChoose an option:\n";
+                cout << "1. Push\n2. Pop\n3. Print Stack\n4. Exit\n";
+                cout << "Enter your choice: ";
+                cin >> choice;
+
+                switch (choice) {
+                    case 1:
+                        cout << "Enter value to push: ";
+                        cin >> value;
+                        push(stack, value);
+                        break;
+
+                    case 2: {
+                        if (pop(stack, value)) {
+                            cout << "Popped: " << value << endl;
+                        } else {
+                            cout << "Stack is empty!\n";
+                        }
+                        break;
+                    }
+
+                    case 3:  
+                        printStack(stack);
+                        break;
+
+                    case 4:  
+                        cout << "Exiting...\n";
+                        return 0;
+
+                    default:
+                        cout << "Invalid choice!\n";
+                }
+            }
+        }
+
+        case 2: {
+            mystack<float> stack;
+            float value;
+            cout << "Enter initial stack size (max " << getMaxSize() << "): ";
+            cin >> stackSize;
+
+            if (!initialize(stack, stackSize)) {
+                cout << "Stack initialization failed!\n";
+                return 1;
+            }
+
+            while (true) {
+                cout << "\nChoose an option:\n";
+                cout << "1. Push\n2. Pop\n3. Print Stack\n4. Exit\n";
+                cout << "Enter your choice: ";
+                cin >> choice;
+
+                switch (choice) {
+                    case 1:
+                        cout << "Enter value to push: ";
+                        cin >> value;
+                        push(stack, value);
+                        break;
+
+                    case 2: {
+                        if (pop(stack, value)) {
+                            cout << "Popped: " << value << endl;
+                        } else {
+                            cout << "Stack is empty!\n";
+                        }
+                        break;
+                    }
+
+                    case 3:  
+                        printStack(stack);
+                        break;
+
+                    case 4:  
+                        cout << "Exiting...\n";
+                        return 0;
+
+                    default:
+                        cout << "Invalid choice!\n";
+                }
+            }
+        }
+
+        case 3: {
+            mystack<MyStruct> stack;
+            MyStruct value;
+            cout << "Enter initial stack size (max " << getMaxSize() << "): ";
+            cin >> stackSize;
+
+            if (!initialize(stack, stackSize)) {
+                cout << "Stack initialization failed!\n";
+                return 1;
+            }
+
+            while (true) {
+                cout << "\nChoose an option:\n";
+                cout << "1. Push\n2. Pop\n3. Print Stack\n4. Exit\n";
+                cout << "Enter your choice: ";
+                cin >> choice;
+
+                switch (choice) {
+                    case 1:
+                        cout << "Enter name: ";
+                        cin >> value.name;
+                        cout << "Enter age: ";
+                        cin >> value.age;
+                        push(stack, value);
+                        break;
+
+                    case 2: {
+                        if (pop(stack, value)) {
+                            cout << "Popped: Name: " << value.name << ", Age: " << value.age << endl;
+                        } else {
+                            cout << "Stack is empty!\n";
+                        }
+                        break;
+                    }
+
+                    case 3:  
+                        printStack(stack);
+                        break;
+
+                    case 4:  
+                        cout << "Exiting...\n";
+                        return 0;
+
+                    default:
+                        cout << "Invalid choice!\n";
+                }
+            }
+        }
+
+        case 4: {
+            mystack<char*> stack;
+            char* value = new char[50];
+            cout << "Enter initial stack size (max " << getMaxSize() << "): ";
+            cin >> stackSize;
+
+            if (!initialize(stack, stackSize)) {
+                cout << "Stack initialization failed!\n";
+                return 1;
+            }
+
+            while (true) {
+                cout << "\nChoose an option:\n";
+                cout << "1. Push\n2. Pop\n3. Print Stack\n4. Exit\n";
+                cout << "Enter your choice: ";
+                cin >> choice;
+
+                switch (choice) {
+                    case 1:
+                        cout << "Enter string to push: ";
+                        cin >> value;
+                        push(stack, value);
+                        break;
+
+                    case 2: {
+                        if (pop(stack, value)) {
+                            cout << "Popped: " << value << endl;
+                        } else {
+                            cout << "Stack is empty!\n";
+                        }
+                        break;
+                    }
+
+                    case 3:  
+                        printStack(stack);
+                        break;
+
+                    case 4:  
+                        cout << "Exiting...\n";
+                        return 0;
+
+                    default:
+                        cout << "Invalid choice!\n";
+                }
+            }
+        }
+
+        default:
+            cout << "Invalid choice!\n";
+            return 1;
+    }
 }

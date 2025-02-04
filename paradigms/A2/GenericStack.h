@@ -73,7 +73,7 @@ int inflate(mystack& st) {
 
             temp = newA;
             for (int i = 0; i <= st.count; i++) {
-                free(oldA[i]); 
+                delete (oldA[i]); 
             }
             delete[] oldA; 
             break;

@@ -21,14 +21,15 @@ public:
     void PrintStudentData() const;
 };
 void student :: ReadStudentData(){
-    cout<<"Enter name : \n";
+    cout<<"Enter name : ";
     cin>>this->name;
-    cout<<"Enter age : \n";
+    cout<<"Enter age : ";
     cin>>this->age;
-    cout<<"Enter department : \n";
+    cout<<"Enter department : ";
     cin>>this->dept;
-    cout<<"Enter the year : \n";
+    cout<<"Enter the year : ";
     cin>>this->year;
+    cout<<"\n";
 }
 
 void student :: PrintStudentData() const{
@@ -52,7 +53,7 @@ int main(){
         arr[i] = s;
     }
     cout<<"\n\n";
-    arr[n-1].displayNumOfStudent();
+    arr[0].displayNumOfStudent();
     for(int i=0;i<n;i++){
         arr[i].PrintStudentData();
     }

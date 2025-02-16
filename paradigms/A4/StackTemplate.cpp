@@ -1,8 +1,9 @@
 #include<iostream>
 using namespace std;
 
+template <typename T>
 class mystack{
-    int *arr;
+    T *arr;
     int topIndex;
     int currentSize;
     static const int MaxSize;
@@ -14,14 +15,14 @@ public:
             cout<<"Overflow!\n";
             return;
         }
-        arr = new int[currentSize];
+        arr = new T[currentSize];
         instanceCount++; 
     }
     //Copy Constructor
     mystack(const mystack &st){
         this->topIndex = st.topIndex;
         this->currentSize = st.currentSize;
-        this->arr = new int[currentSize];
+        this->arr = new T[currentSize];
         for(int i=0;i<=topIndex;i++){
             this->arr[i] = st.arr[i];
         }
@@ -40,14 +41,14 @@ public:
         delete[] arr;
         this->topIndex = st.topIndex;
         this->currentSize = st.currentSize;
-        this->arr = new int[currentSize];
+        this->arr = new T[currentSize];
         for(int i=0;i<=topIndex;i++){
             this->arr[i] = st.arr[i];
         }
         return *this;
     }
 
-    void push(int data){
+    void push(const T& data){
         if(topIndex+1 == MaxSize) return;
         if(topIndex == currentSize-1){
             inflate();
@@ -55,7 +56,7 @@ public:
         arr[++topIndex] = data;
     }
 
-    int pop(){
+    T pop(){
         if(isEmpty()){
             cout<<"Underflow!\n";
         }
@@ -68,7 +69,7 @@ public:
         return topIndex+1;
     }
     int isEmpty(){
-        return topIndex==-1;
+        return topIndex == -1;
     }
     void inflate(){
         cout<<"Inflating\n";
@@ -77,7 +78,7 @@ public:
             return;
         }
         int newSize = currentSize+1;
-        int *temp = new int[newSize];
+        T *temp = new T[newSize];
         if(temp == NULL){
             cout<<"Memory Error\n";
             return;
@@ -94,62 +95,59 @@ public:
             cout<<arr[i]<<' ';
         }
         cout<<endl;
-    }    
+    }
     static int instCount(){
         return instanceCount;
     }
 
+
 };
-
-const int mystack :: MaxSize = 50;
-int mystack :: instanceCount = 0;
-
+template <typename T>
+const int mystack<T> :: MaxSize = 50;
+template <typename T>
+int mystack<T> :: instanceCount = 0;
+struct mystruct {
+    int a;
+    friend ostream& operator<<(ostream& os, const mystruct& ms) {
+        os << ms.a;
+        return os;
+    }
+};
 int main(){
-    mystack s1(6);
-    mystack s2(5);
-    for(int i=1;i<=6;i++){
-        s1.push(i);
-    }
-    for(int i=0;i<5;i++){
-        s2.push(i+7);
-    }
-    cout<<"Stack 1: ";
+    mystack<int>s1(3);
+    s1.push(1);
+    s1.push(2);
+    s1.push(3);
+    cout<<"Interger Stack\n";
     s1.display();
-    cout<<"Stack 2: ";
+    mystack<double>s2(3);
+    s2.push(1.1);
+    s2.push(2.2);
+    s2.push(3.3);
+    cout<<"Double Stack\n";
     s2.display();
-    mystack s3(11);
-    int i=1;
-    while(!s1.isEmpty() && !s2.isEmpty()){
-        if(i%2==0){
-            s3.push(s2.pop());
-        }else{
-            s3.push(s1.pop());
-        }
-        i++;
-    }
-    while(!s1.isEmpty()){
-        s3.push(s1.pop());
-    }
-    while(!s2.isEmpty()){
-        s3.push(s2.pop());
-    }
-    cout<<"Stack 3: ";
+   mystack<short>s3(3);
+    s3.push(1);
+    s3.push(2);
+    s3.push(3);
+    cout<<"Short Stack\n";
     s3.display();
-    mystack s4 = s3;
-    cout<<"Created using copy constructor\n";
-    cout<<"Stack 4: ";
+    mystack<float>s4(3);
+    s4.push(1.1);
+    s4.push(2.2);
+    s4.push(3.3);
+    cout<<"Float Stack\n";
     s4.display();
-    mystack s5(6);
-
-    s5 = s3;
-    cout<<"Created using assignment operator\n";
-    cout<<"Stack 5: ";
+    mystruct ms1,ms2,ms3;
+    ms1.a = 1;
+    ms2.a = 2;
+    ms3.a = 3;
+    mystack<mystruct>s5(3);
+    s5.push(ms1);
+    s5.push(ms2);
+    s5.push(ms3);
+    cout<<"Struct Stack\n";
     s5.display();
-    mystack s6(6);
-    for(int i=1;i<=10;i++){
-        s6.push(i);
-    }
-    cout<<"Stack 6: ";
-    s6.display();
-    cout<<"Instance Count: "<<mystack::instCount()<<endl;
+    cout<<"Number of instances: "<<s1.instCount()<<endl;
+    return 0;
 }

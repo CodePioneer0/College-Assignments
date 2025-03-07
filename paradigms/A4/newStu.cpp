@@ -70,14 +70,14 @@ int student::studentCount = 0;
 
 int main() {
     student* s1 = new student();
-    // s1->ReadStudentData();
-    // s1->PrintStudentData();
-    // delete s1;
+    s1->ReadStudentData();
+    s1->PrintStudentData();
+    delete s1;
     
-    // student* s2 = new student();
-    // s2->ReadStudentData();
-    // s2->PrintStudentData();
-    // delete s2;
+    student* s2 = new student();
+    s2->ReadStudentData();
+    s2->PrintStudentData();
+    delete s2;
     
     return 0;
 }

@@ -2,33 +2,58 @@
 using namespace std;
 
 class mystack{
-    int *arr;
+    int **arr;
     int topIndex;
     int currentSize;
+    int rowCount;
+    int rowSize;
     static const int MaxSize;
     static int instanceCount;
+
+    inline bool isEmpty() const{
+        return topIndex==-1;
+    }
 public:
    //Default Constructor
-    mystack(int size) : topIndex(-1),currentSize(size){
+    mystack(int size) : topIndex(-1),currentSize(size),rowCount(1),rowSize(size){
         if(currentSize>MaxSize){
             cout<<"Overflow!\n";
             return;
         }
-        arr = new int[currentSize];
+        arr = new int*[MaxSize/rowSize + 1];
+        arr[0] = new int[rowSize];
+        for(int i=1;i<MaxSize/rowSize + 1;i++){
+            arr[i] = nullptr;
+        }
         instanceCount++; 
     }
     //Copy Constructor
-    mystack(const mystack &st){
-        this->topIndex = st.topIndex;
-        this->currentSize = st.currentSize;
-        this->arr = new int[currentSize];
-        for(int i=0;i<=topIndex;i++){
-            this->arr[i] = st.arr[i];
+    mystack(const mystack &st): topIndex(st.topIndex),currentSize(st.currentSize),rowCount(st.rowCount),rowSize(st.rowSize){
+        
+
+        this->arr = new int*[MaxSize/rowSize + 1];
+
+        for(int i=0;i<rowCount;i++){
+            if(st.arr[i]!=nullptr){
+                this->arr[i] = new int[rowSize];
+                for(int j=0;j<rowSize && (i*rowSize+j<=topIndex);j++){
+                    this->arr[i][j] = st.arr[i][j];
+                }
+            }
+            else{
+                this->arr[i] = nullptr;
+            }
+        }
+        for(int i=rowCount;i<MaxSize/rowSize + 1;i++){
+            this->arr[i] = nullptr;
         }
         instanceCount++;
     }
     //Destructor
     ~mystack(){
+        for(int i=0;i<rowCount;i++){
+            delete[] arr[i];
+        }
         delete[] arr;
         instanceCount--;
     }
@@ -37,61 +62,89 @@ public:
         if(this == &st){
             return *this;
         }
+        for(int i=0;i<rowCount;i++){
+            if(arr[i] != nullptr){
+                delete[] arr[i];
+            }
+        }
         delete[] arr;
         this->topIndex = st.topIndex;
         this->currentSize = st.currentSize;
-        this->arr = new int[currentSize];
-        for(int i=0;i<=topIndex;i++){
-            this->arr[i] = st.arr[i];
+        this->rowCount = st.rowCount;
+        this->rowSize = st.rowSize;
+        this->arr = new int*[MaxSize/rowSize + 1];
+        for(int i=0;i<rowCount;i++){
+            if(st.arr[i]!=nullptr){
+                this->arr[i] = new int[rowSize];
+                for(int j=0;j<rowSize && (i*rowSize+j)<=topIndex;j++){
+                    this->arr[i][j] = st.arr[i][j];
+                }
+            }
+            else{
+                this->arr[i] = nullptr;
+            }
+        }
+        for(int i=rowCount;i<MaxSize/rowSize + 1;i++){
+            this->arr[i] = nullptr;
         }
         return *this;
     }
 
-    void push(int data){
-        if(topIndex+1 == MaxSize) return;
-        if(topIndex == currentSize-1){
-            inflate();
+    bool push(const int &data) {
+        if (topIndex + 1 == MaxSize) {
+            cout << "Overflow!\n";
+            return false;
         }
-        arr[++topIndex] = data;
+        
+        if (topIndex + 1 == currentSize) {
+            if(!inflate()){
+                return false;
+            }
+        }
+        topIndex++;
+        int row = topIndex / rowSize;
+        int col = topIndex % rowSize;
+        arr[row][col] = data;
+        return true;
     }
 
-    int pop(){
-        if(isEmpty()){
-            cout<<"Underflow!\n";
+    bool pop(int &data) {
+        if (isEmpty()) {
+            cout << "Underflow!\n";
+            return false;
         }
-        return arr[topIndex--];
+        int row = topIndex / rowSize;
+        int col = topIndex % rowSize;
+        data = arr[row][col];
+        topIndex--;
+        return true;
     }
-    int getMaxSize(){
+    inline int getMaxSize() const{
         return MaxSize;
     }
-    int currSize() const{
+    inline int currSize() const{
         return topIndex+1;
     }
-    int isEmpty(){
-        return topIndex==-1;
+    
+    bool inflate() {
+        cout << "Inflating - New Row\n";
+        if (currentSize + rowSize > MaxSize) {
+            cout << "Cannot inflate\n";
+            return false;
+        }
+
+        if (arr[rowCount] == nullptr) {
+            arr[rowCount] = new int[rowSize];
+        }
+        rowCount++;
+        currentSize += rowSize;
+        return true;
     }
-    void inflate(){
-        cout<<"Inflating\n";
-        if(topIndex+1 == MaxSize){
-            cout<<"Max size reached\n";
-            return;
-        }
-        int newSize = currentSize+1;
-        int *temp = new int[newSize];
-        if(temp == NULL){
-            cout<<"Memory Error\n";
-            return;
-        }
+    void display() const{
         for(int i=0;i<=topIndex;i++){
-            temp[i] = arr[i];
-        }
-        delete[] arr;
-        arr = temp;
-        currentSize = newSize;
-    }
-    void display(){
-        for(int i=0;i<=topIndex;i++){
-            cout<<arr[i]<<' ';
+            int row = i/rowSize;
+            int col = i%rowSize;
+            cout<<arr[row][col]<<" ";
         }
         cout<<endl;
     }    

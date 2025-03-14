@@ -62,13 +62,13 @@ public:
         }
         return arr[topIndex--];
     }
-    int getMaxSize(){
+    inline int getMaxSize()const{
         return MaxSize;
     }
-    int currSize() const{
+    inline int currSize() const{
         return topIndex+1;
     }
-    int isEmpty(){
+    inline int isEmpty()const{
         return topIndex == -1;
     }
     void inflate(){
@@ -90,13 +90,13 @@ public:
         arr = temp;
         currentSize = newSize;
     }
-    void display(){
+    void display()const{
         for(int i=0;i<=topIndex;i++){
             cout<<arr[i]<<' ';
         }
         cout<<endl;
     }
-    static int instCount(){
+    static int instCount()const{
         return instanceCount;
     }
 

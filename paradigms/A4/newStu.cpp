@@ -61,7 +61,7 @@ void student::PrintStudentData() const {
     cout << "Year : " << year << "\n"; 
 }
 
-void student::displayNumOfStudent() {
+void student::displayNumOfStudent(){
     cout << "Number of students : " << studentCount << endl;
 }
 

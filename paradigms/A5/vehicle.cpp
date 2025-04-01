@@ -1,7 +1,8 @@
 #include <iostream>
+#include <cstring>
 using namespace std;
-Class Vehicle {
-    private :
+class Vehicle {
+    protected :
     int price;
     char *manufacturer;
     public :
@@ -10,8 +11,13 @@ Class Vehicle {
         price = 0;
         manufacturer = NULL;
     }
+    ~Vehicle(){
+        if(manufacturer != NULL){
+            delete [] manufacturer;
+        }
+    }
     // Parameterized constructor
-    Vehicle(int p, char *m){
+    Vehicle(const int &p, char *m){
         price = p;
         manufacturer = new char[strlen(m)+1];
         strcpy(manufacturer, m);
@@ -37,10 +43,13 @@ Class Vehicle {
     }
     // Read data
     void readData(){
+        char m[100];
         cout << "Enter price: ";
         cin >> price;
         cout << "Enter manufacturer: ";
-        cin >> manufacturer;
+        cin >> m;
+        manufacturer = new char[strlen(m)+1];
+        strcpy(manufacturer, m);
     }
     // Display data
     void displayData() const{
@@ -62,8 +71,16 @@ class Car : public Vehicle{
        NoOfSeats = 0;
        model = NULL;
    }
+   ~Car(){
+         if(color != NULL){
+              delete [] color;
+         }
+         if(model != NULL){
+              delete [] model;
+         }
+   }
 // Parameterized constructor
-    Car(int p,char *m,char *c,int n,char *mo) : Vehicle(p,m){
+    Car(const int &p,char *m,char *c,const int &n,char *mo) : Vehicle(p,m){
         color = new char[strlen(c)+1];
         strcpy(color, c);
         NoOfSeats = n;
@@ -87,12 +104,12 @@ class Car : public Vehicle{
         if(color != NULL){
             delete [] color;
         }
-        color = new char[strlen(c.color)+1];
-        strcpy(color, c.color);
-        NoOfSeats = c.NoOfSeats;
         if(model != NULL){
             delete [] model;
         }
+        color = new char[strlen(c.color)+1];
+        strcpy(color, c.color);
+        NoOfSeats = c.NoOfSeats;
         model = new char[strlen(c.model)+1];
         strcpy(model, c.model);
         return *this;
@@ -100,18 +117,56 @@ class Car : public Vehicle{
 // Read data
     void readData(){
         Vehicle::readData();
+        char c[100], m[100];
         cout << "Enter color: ";
-        cin >> color;
+        cin >> c;
         cout << "Enter number of seats: ";
         cin >> NoOfSeats;
         cout << "Enter model: ";
-        cin >> model;
+        cin >> m;
+        color = new char[strlen(c)+1];
+        strcpy(color, c);
+        model = new char[strlen(m)+1];
+        strcpy(model, m);
     }
 // Display data
     void displayData() const{
+        cout << "--Car Profile--" << endl;
         Vehicle::displayData();
         cout << "Color: " << color << endl;
         cout << "Number of seats: " << NoOfSeats << endl;
         cout << "Model: " << model << endl;
     }
+};
+int main(){
+    Vehicle v1;
+    v1.readData();
+    cout<<"--Vehicle Profile--"<<endl;
+    v1.displayData();
+    cout<<endl;
+    cout<<"Made with copy constructor"<<endl;
+    Vehicle v2 = v1; // Copy constructor
+    v2.displayData();
+    cout<<endl;
+    cout<<"Made with assignment operator"<<endl;
+    Vehicle v3;
+    v3 = v1; // Assignment operator
+    v3.displayData();
+
+
+
+    Car c1;
+    c1.readData();
+    c1.displayData();
+    cout<<endl;
+    cout<<"Made with copy constructor"<<endl;
+    Car c2 = c1; // Copy constructor
+    c2.displayData();
+    cout<<endl;
+    cout<<"Made with assignment operator"<<endl;
+    Car c3;
+    c3 = c1; // Assignment operator
+    c3.displayData();
+    
+    return 0;
 }

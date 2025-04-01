@@ -1,13 +1,15 @@
 #include<iostream>
+#include<string>
 using namespace std;
 
-class person{
+class Person{
+protected:    
     string name;
     int age;
     string gender;
-    public:
-    person() : name(""),age(0),gender(""){}
-    person(string n,int a,string g) : name(n),age(a),gender(g){}
+public:
+    Person() : name(""),age(0),gender(""){}
+    Person(const string &n,const int &a,const string &g) : name(n),age(a),gender(g){}
     void readData(){
         cout<<"Enter the name : ";
         cin>>name;
@@ -16,65 +18,90 @@ class person{
         cout<<"Enter the gender : ";
         cin>>gender;
     }
-    void writeData(){
+    void writeData() const{
         cout<<"Name : "<<name<<endl;
         cout<<"Age : "<<age<<endl;
         cout<<"Gender :"<<gender<<endl;
     }
 };
 
-class Student : public person{
+class Student : public Person{
+private:    
     string dept;
     int year;
-    public:
+public:
     Student() : dept(""),year(0){}
-    Student(string n,int a,string g,string d,int y) : dept(d),year(y),person(n,a,g){} 
+    Student(const string &n,const int &a,const string &g,const string &d,const int &y) : Person(n,a,g),dept(d),year(y){} 
     void readData(){
-        person :: readData();
+        Person :: readData();
         cout<<"Enter the dept :"<<endl;
         cin>>dept;
         cout<<"Enter the year :"<<endl;
         cin>>year;
     }
-    void writeData(){
-        person::writeData();
+    void writeData() const{
+        cout<<"--Student Profile--"<<endl;
+        Person::writeData();
         cout<<"Department : "<<dept<<endl;
         cout<<"Year : "<<year<<endl;
     }
 };
-class Clerk : public person{
+class Clerk : public Person{
+private:    
     int workLoad;
-    int salary;
+    double salary;
     public:
     Clerk() : workLoad(0),salary(0){}
-    Clerk(string n,int a,string g,int w,int s) : workLoad(w),salary(s),person(n,a,g){}
+    Clerk(const string &n,const int &a,const string &g,const int &w,const double &s) : Person(n,a,g), workLoad(w),salary(s){}
     void readData(){
-        person :: readData();
-        cout<<"Enter the workload :"<<endl;
+        Person :: readData();
+        cout<<"Enter the workload :";
         cin>>workLoad;
-        cout<<"Enter the salary :"<<endl;
+        cout<<"Enter the salary :";
         cin>>salary;
     }
-    void writeData(){
-        person::writeData();
+    void writeData()const{
+        cout<<"--Clerk Profile--"<<endl;
+        Person::writeData();
         cout<<"Workload : "<<workLoad<<endl;
         cout<<"Salary : "<<salary<<endl;
     }
 
 };
 
-class Professor : public person{
+class Professor : public Person{
+private:    
     string dept;
     int courseLoad;
-    int salary;
-    Professor() : dept(""),courseLoad(0),(0){}
-    Professor(string dept)
+    double salary;
+public:
+    Professor() : dept(""),courseLoad(0),salary(0){}
+    Professor(const string &n,const int &a,const string &g,const string &d,const int &c,const double &s) : Person(n,a,g),dept(d),courseLoad(c),salary(s){}
+    void readData(){
+        Person :: readData();
+        cout<<"Enter the department :";
+        cin>>dept;
+        cout<<"Enter the courseload :";
+        cin>>courseLoad;
+        cout<<"Enter the salary:";
+        cin>>salary;
+    }
+    void writeData() const{
+        cout<<"--Professor Profile--"<<endl;
+        Person::writeData();
+        cout<<"Department :"<<dept<<endl;
+        cout<<"CourseLoad :"<<courseLoad<<endl;
+        cout<<"Salary :"<<salary<<endl;
+    }
+
 };
 
 int main(){
-    Student s("Sayak",21,"M","CST",2);
-    s.writeData();
-    Clerk C("Sayak",21,"M",12,1200000);
-    C.writeData();
+    Student student("John Smith", 20, "Male", "Computer Science", 2);
+    Clerk clerk("Jane Doe", 35, "Female", 40, 45000.0);
+    Professor professor("Dr. Robert Johnson", 45, "Male", "Physics", 12, 95000.0);
+    student.writeData();
+    clerk.writeData();
+    professor.writeData();
 
 }

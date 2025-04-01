@@ -1,7 +1,12 @@
-class Professor : public person{
-//     string dept;
-//     int courseLoad;
-//     int salary;
-//     Professor() : dept(""),courseLoad(0),(0){}
-    
-// };
+Student s;
+    cout<<"Enter the details of student : "<<endl;
+    s.readData();
+    cout<<endl<<"Student Details : "<<endl;
+    s.writeData();
+    cout<<endl;
+    cout<<"Enter the details of clerk : "<<endl;
+    clerk c;
+    c.readData();
+    cout<<endl<<"Clerk Details : "<<endl;
+    c.writeData();
+    cout<<endl;

@@ -1,12 +1,4 @@
-Student s;
-    cout<<"Enter the details of student : "<<endl;
-    s.readData();
-    cout<<endl<<"Student Details : "<<endl;
-    s.writeData();
-    cout<<endl;
-    cout<<"Enter the details of clerk : "<<endl;
-    clerk c;
-    c.readData();
-    cout<<endl<<"Clerk Details : "<<endl;
-    c.writeData();
-    cout<<endl;
+class AllRounder : public Batsman, public Bowler{    
+// public:
+             
+// };

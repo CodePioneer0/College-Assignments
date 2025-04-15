@@ -1,0 +1,13 @@
+3
+Alice Johnson
+20
+Computer Science
+2
+Bob Smith
+21
+Mechanical Engineering
+3
+Carol Singh
+19
+Electrical
+1

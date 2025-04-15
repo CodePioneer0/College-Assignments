@@ -1,40 +1,113 @@
-#include "GenericSort.h"
-template<typename T>
-void printArray(T arr[],int n){
-        for(int i=0;i<n;i++){
-                cout<<arr[i]<<" ";
-        }
-}
-struct Student{
-        string name;
-        int age;
-};
-int main(){
-        int arr[] = {5,4,3,2,1};
-        float arr1[] = {5.5,4.4,3.3,2.2,1.1};
-        double arr2[] = {5.5,4.4,3.3,2.2,1.1};
-        short arr3[] = {5,4,3,2,1};
-        struct Student s[2];
-        s[0].name = "A";
-        s[0].age = 20;
-        s[1].name = "B";
-        s[1].age = 21;
-        insertionSort(arr,5);
-        insertionSort(arr1,5);
-        insertionSort(arr2,5);
-        insertionSort(arr3,5);
-        //insertionSort(s,2);
-        cout<<"Integers: ";
-        printArray(arr,5);
-        cout<<endl;
-        cout<<"Floats: ";
-        printArray(arr1,5);
-        cout<<endl;
-        cout<<"Doubles: ";
-        printArray(arr2,5);
-        cout<<endl;
-        cout<<"Shorts: ";
-        printArray(arr3,5);
-        cout<<endl;
+#include<iostream>
+using namespace std;
 
+template<typename T>
+void insertionSort(T arr[], int n) {
+    for(int i=1; i<n; i++) {
+        int j = i;
+        while(j>0 && arr[j-1]>arr[j]) {
+            swap(arr[j-1], arr[j]);
+            j--;
+        }
+    }
+}
+
+template<typename T>
+void printArray(T arr[], int n) {
+    for(int i=0; i<n; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+int main() {
+    int choice;
+    
+    cout << "What type of array do you want to sort?\n";
+    cout << "1. Integer Array\n";
+    cout << "2. Float Array\n";
+    cout << "3. Double Array\n";
+    cout << "4. Short Array\n";
+    cout << "Enter your choice: ";
+    cin >> choice;
+    
+    if(choice == 1) {
+        int n;
+        cout << "Enter the number of integers: ";
+        cin >> n;
+        int* arr = new int[n];
+        cout << "Enter " << n << " integers:\n";
+        for(int i=0; i<n; i++) {
+            cin >> arr[i];
+        }
+        
+        cout << "Array before sorting: ";
+        printArray(arr, n);
+        
+        insertionSort(arr, n);
+        
+        cout << "Array after sorting: ";
+        printArray(arr, n);
+        delete[] arr;
+    }
+    else if(choice == 2) {
+        int n;
+        cout << "Enter the number of floats: ";
+        cin >> n;
+        
+        float* arr = new float[n];
+        cout << "Enter " << n << " float numbers:\n";
+        for(int i=0; i<n; i++) {
+            cin >> arr[i];
+        }
+        
+        cout << "Array before sorting: ";
+        printArray(arr, n);
+        insertionSort(arr, n);
+        
+        cout << "Array after sorting: ";
+        printArray(arr, n);
+        
+        delete[] arr;
+    }
+    else if(choice == 3) {
+        int n;
+        cout << "Enter the number of doubles: ";
+        cin >> n;
+        
+        double* arr = new double[n];
+        cout << "Enter " << n << " double numbers:\n";
+        for(int i=0; i<n; i++) {
+            cin >> arr[i];
+        }
+        cout << "Array before sorting: ";
+        printArray(arr, n);
+        insertionSort(arr, n);
+        cout << "Array after sorting: ";
+        printArray(arr, n);
+        delete[] arr;
+    }
+    else if(choice == 4) {
+        int n;
+        cout << "Enter the number of shorts: ";
+        cin >> n;
+        short* arr = new short[n];
+        cout << "Enter " << n << " short numbers:\n";
+        for(int i=0; i<n; i++) {
+            cin >> arr[i];
+        }
+        
+        cout << "Array before sorting: ";
+        printArray(arr, n);
+        
+        insertionSort(arr, n);
+        cout << "Array after sorting: ";
+        printArray(arr, n);
+        delete[] arr;
+    }
+    else {
+        cout << "Invalid choice!" << endl;
+    }
+    
+    return 0;
 }

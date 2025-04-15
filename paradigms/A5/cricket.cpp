@@ -1,99 +1,109 @@
 #include<iostream>
-#include <map>
+#include<string>
 using namespace std;
-
+const int NoMatches = 3;
 class Cricketer{
 protected:
     string name;
-    int matches;
-public:    
-    Cricketer() : name(""),matches(0){}
-    void Read(){
-        cout<<"Enter the name of the cricketer : ";
+    string country[NoMatches];
+public:
+     Cricketer(){
+        cout<<"Enter Name : ";
         cin>>name;
-        cout<<"Enter the number of matches played : ";
-        cin>>matches;
-    }
-    virtual void Write() const{
-        cout<<"Name : "<<name<<endl;
-        cout<<"Matches played : "<<matches<<endl;
-    }
-    
+        for(int i=0;i<NoMatches;i++){
+            country[i] = "";
+        }
+     }        
 };
-class Batsman : virtual public Cricketer{
+class Batsman : public virtual Cricketer{
 protected:
-    map<string,int> TeamsBat;
-    int TotalRuns;    
+    unsigned int runs[NoMatches];
+    bool out[NoMatches];
 public:
-    Batsman() : TotalRuns(0){}
-    void InsertRuns(const string &team,const int &runs){
-        TeamsBat[team] += runs;
-        TotalRuns += runs;
-    }
-
-};    
+    Batsman(){
+        for(int i=0;i<NoMatches;i++){
+            runs[i] = 0;
+            out[i] = false;
+        }
+    } 
+};
 class Bowler : virtual public Cricketer{
-protected:
-    map<string,int> TeamsBall;
-    int TotalWickets;
+protected:    
+    unsigned int wickets[NoMatches];
 public:
-    Bowler() : TotalWickets(0){}    
-    void InsertWickets(const string &team,const int &wickets){
-        TeamsBall[team] += wickets;
-        TotalWickets += wickets;
-    }
+    Bowler(){
+        for(int i=0;i<NoMatches;i++){
+            wickets[i] = 0;
+        }
+    }     
 };
-class AllRounder : public Batsman, public Bowler{
+class AllRounder : public Batsman, public Bowler{    
 public:
-    void InsertRecord(const string &team,const int &runs,const int &wickets){
-        InsertRuns(team,runs);
-        InsertWickets(team,wickets);
+    void insertMatchRecord(){
+        for(int i=0;i<NoMatches;i++){
+            cout<<"Enter Enemy country name : ";
+            cin>>country[i];
+            cout<<"Enter the runs scored : ";
+            cin>>runs[i];
+            cout<<"Enter the wickets taken : ";
+            cin>>wickets[i];
+            cout<<"Enter if out (1/0) : ";
+            cin>>out[i];
+        }
+        cout<<endl;
     }
-    double GetBattingAverage() const{
-        if(matches == 0) return 0;
-        return static_cast<double>(TotalRuns)/matches;
-    }
-    int TotalWicketsTaken() const{
-        return TotalWickets;
-    }
-    string HighestRunsAgainst() const{
-        string team = "None";
-        int max = 0;
-        for(auto &it : TeamsBat){
-            if(it.second > max){
-                max = it.second;
-                team = it.first;
+    void battingAverage(){
+        float sum = 0;
+        float count = 0;
+        for(int i=0;i<NoMatches;i++){
+            sum+=runs[i];
+            if(out[i] != false){
+                count++;
             }
         }
-        return team;
+        if(count == 0){
+            cout<<"Not out in all matches"<<endl;
+        }
+        else{
+            cout<<"Batting Average : "<<sum/count<<endl;
+        }
     }
-    string HighestWicketsAgainst() const{
-        string team = "None";
-        int max = 0;
-        for(auto &it : TeamsBall){
-            if(it.second > max){
-                max = it.second;
-                team = it.first;
+    void TotalWickets(){
+        unsigned int sum = 0;
+        for(int i=0;i<NoMatches;i++){
+            sum+=wickets[i];
+        }
+        cout<<"Total Wickets Taken : "<<sum<<endl;
+    }
+    void HighestWicketAgainst(){
+        int ind = 0 ;
+        for(int i=0;i<NoMatches;i++){
+            if(wickets[i] > wickets[ind]){
+                ind = i;
             }
         }
-        return team;
+        cout<<"Highest Wicket Taken Against : "<<country[ind]<<" with "<<wickets[ind]<<" wickets"<<endl;
     }
-    void Display() const{
-        cout<<"Name : "<<name<<endl;
-        cout<<"Matches played : "<<matches<<endl;
-        cout<<"Total Runs : "<<TotalRuns<<endl;
-        cout<<"Total Wickets : "<<TotalWicketsTaken()<<endl;
-        cout<<"Batting Average : "<<GetBattingAverage()<<endl;
-        cout<<"Highest Runs against : "<<HighestRunsAgainst()<<endl;
-        cout<<"Highest Wickets against : "<<HighestWicketsAgainst()<<endl;
-    }
+    void HighestRunAgainst(){
+        int ind = 0 ;
+        for(int i=0;i<NoMatches;i++){
+            if(runs[i] > runs[ind]){
+                ind = i;
+            }
+        }
+        cout<<"Highest Run Scored Against : "<<country[ind]<<" with "<<runs[ind]<<" runs"<<endl;
+    }             
 };
+
+
 int main(){
     AllRounder a;
-    a.Read();
-    a.InsertRecord("India",100,5);
-    a.InsertRecord("Pakistan",200,10);
-    a.Display();
+    a.insertMatchRecord();
+    a.battingAverage();
+    a.TotalWickets();
+    a.HighestWicketAgainst();
+    a.HighestRunAgainst();
+    cout<<endl;
     return 0;
 }
         

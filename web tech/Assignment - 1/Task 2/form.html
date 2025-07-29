@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Information Form</title>
+</head>
+<body bgcolor="#E8F4FD" text="#2C3E50">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+            <td align="center" bgcolor="#3498DB" height="80">
+                <h1><font size="5" color="#FFFFFF" face="Arial, sans-serif">🎓 STUDENT INFORMATION PORTAL 🎓</font></h1>
+            </td>
+        </tr>
+    </table>
+    
+    <center>
+        <table width="90%" cellpadding="20" cellspacing="0" border="2" bordercolor="#3498DB" bgcolor="#FFFFFF">
+            <tr>
+                <td>
+                    <form action="list.html" method="post" enctype="multipart/form-data" target="content">
+                        
+                        <!-- Personal Details Section -->
+                        <fieldset>
+                            <legend><font size="4" color="#E74C3C" face="Arial, sans-serif"><b>📋 Personal Information</b></font></legend>
+                            <table width="100%" cellpadding="8" cellspacing="5">
+                                <tr>
+                                    <td width="30%" bgcolor="#ECF0F1">
+                                        <font face="Arial, sans-serif"><b>👤 Full Name:</b></font>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="name" name="name" size="40" required 
+                                               style="border: 2px solid #3498DB; padding: 5px;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#ECF0F1">
+                                        <font face="Arial, sans-serif"><b>🏠 Address:</b></font>
+                                    </td>
+                                    <td>
+                                        <textarea id="address" name="address" rows="3" cols="38" required
+                                                  style="border: 2px solid #3498DB; padding: 5px;"></textarea>
+                                    </td>
+                                </tr>
+                            </table>
+                        </fieldset>
+                        
+                        <br>
+                        
+                        <!-- Academic Details Section -->
+                        <fieldset>
+                            <legend><font size="4" color="#27AE60" face="Arial, sans-serif"><b>📚 Academic Information</b></font></legend>
+                            <table width="100%" cellpadding="8" cellspacing="5">
+                                <tr>
+                                    <td width="30%" bgcolor="#ECF0F1">
+                                        <font face="Arial, sans-serif"><b>📅 Semester:</b></font>
+                                    </td>
+                                    <td>
+                                        <select name="semester" required style="border: 2px solid #27AE60; padding: 5px;">
+                                            <option value="">Select Semester</option>
+                                            <option value="1">Semester I</option>
+                                            <option value="2">Semester II</option>
+                                            <option value="3">Semester III</option>
+                                            <option value="4">Semester IV</option>
+                                            <option value="5">Semester V</option>
+                                            <option value="6">Semester VI</option>
+                                            <option value="7">Semester VII</option>
+                                            <option value="8">Semester VIII</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#ECF0F1">
+                                        <font face="Arial, sans-serif"><b>🏢 Department:</b></font>
+                                    </td>
+                                    <td>
+                                        <select name="department" required style="border: 2px solid #27AE60; padding: 5px;">
+                                            <option value="">Select Department</option>
+                                            <option value="CSE">Computer Science & Engineering</option>
+                                            <option value="ECE">Electronics & Communication</option>
+                                            <option value="EEE">Electrical & Electronics</option>
+                                            <option value="MECH">Mechanical Engineering</option>
+                                            <option value="CIVIL">Civil Engineering</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#ECF0F1">
+                                        <font face="Arial, sans-serif"><b>📊 CGPA:</b></font>
+                                    </td>
+                                    <td>
+                                        <input type="number" step="0.01" min="0" max="10" id="cgpa" name="cgpa" required
+                                               style="border: 2px solid #27AE60; padding: 5px;">
+                                        <font size="2" color="#7F8C8D">(Scale: 0.0 - 10.0)</font>
+                                    </td>
+                                </tr>
+                            </table>
+                        </fieldset>
+                        
+                        <br>
+                        
+                        <!-- Photo Upload Section -->
+                        <fieldset>
+                            <legend><font size="4" color="#9B59B6" face="Arial, sans-serif"><b>📷 Photo Upload</b></font></legend>
+                            <table width="100%" cellpadding="8" cellspacing="5">
+                                <tr>
+                                    <td width="30%" bgcolor="#ECF0F1">
+                                        <font face="Arial, sans-serif"><b>📸 Student Photo:</b></font>
+                                    </td>
+                                    <td>
+                                        <input type="file" id="photo" name="photo" accept="image/*" required
+                                               style="border: 2px solid #9B59B6; padding: 5px;">
+                                        <br><font size="2" color="#7F8C8D">Accepted formats: JPG, PNG, GIF (Max: 2MB)</font>
+                                    </td>
+                                </tr>
+                            </table>
+                        </fieldset>
+                        
+                        <br><br>
+                        
+                        <!-- Submit Section -->
+                        <center>
+                            <table cellpadding="10">
+                                <tr>
+                                    <td>
+                                        <input type="submit" value="🚀 SUBMIT INFORMATION" 
+                                               style="background-color: #E74C3C; color: white; border: none; padding: 15px 30px; font-size: 16px; font-weight: bold; cursor: pointer;">
+                                    </td>
+                                    <td>
+                                        <input type="reset" value="🔄 RESET FORM" 
+                                               style="background-color: #95A5A6; color: white; border: none; padding: 15px 30px; font-size: 16px; font-weight: bold; cursor: pointer;">
+                                    </td>
+                                </tr>
+                            </table>
+                        </center>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </center>
+    
+    <br><br>
+    
+    <center>
+        <table width="80%" cellpadding="10" bgcolor="#34495E">
+            <tr>
+                <td align="center">
+                    <font color="#FFFFFF" size="2" face="Arial, sans-serif">
+                        💡 <b>Tip:</b> Please ensure all information is accurate before submitting. 
+                        You can view the course structure by submitting the form.
+                    </font>
+                </td>
+            </tr>
+        </table>
+    </center>
+</body>
+</html>

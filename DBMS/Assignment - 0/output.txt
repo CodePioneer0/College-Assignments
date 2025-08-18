@@ -1,0 +1,33 @@
+ABC Company
+Region 1
+Salesman 1 Rs. 85100/-
+Salesman 2 Rs. 85600/-
+Salesman 3 Rs. 148200/-
+Salesman 4 Rs. 110200/-
+Salesman 5 Rs. 89800/-
+Salesman 6 Rs. 106200/-
+Total sale at Region 1 Rs. 625100/-
+Region 2
+Salesman 1 Rs. 131800/-
+Salesman 2 Rs. 117400/-
+Salesman 3 Rs. 88100/-
+Salesman 4 Rs. 126100/-
+Salesman 5 Rs. 90400/-
+Salesman 6 Rs. 118200/-
+Total sale at Region 2 Rs. 672000/-
+Region 3
+Salesman 1 Rs. 82200/-
+Salesman 2 Rs. 77000/-
+Salesman 3 Rs. 135400/-
+Salesman 4 Rs. 87400/-
+Salesman 5 Rs. 102300/-
+Salesman 6 Rs. 112700/-
+Total sale at Region 3 Rs. 597000/-
+Region 4
+Salesman 1 Rs. 108300/-
+Salesman 2 Rs. 105600/-
+Salesman 3 Rs. 102900/-
+Salesman 4 Rs. 74400/-
+Salesman 5 Rs. 151300/-
+Salesman 6 Rs. 114400/-
+Total sale at Region 4 Rs. 656900/-

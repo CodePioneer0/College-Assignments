@@ -1,0 +1,156 @@
+/* External CSS for Resume */
+
+/* External CSS styling for about-projects paragraph */
+.about-projects {
+    background: linear-gradient(135deg, steelblue 0%, mediumpurple 50%, orchid 100%);
+    color: white;
+    text-align: right;
+    font-family: 'Times New Roman', serif;
+    font-size: 19px;
+    padding: 25px 30px;
+    border-radius: 25px;
+    line-height: 1.8;
+    margin: 20px 0;
+    border: 3px solid darkviolet;
+    box-shadow: 0 8px 16px rgba(148, 0, 211, 0.3);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-projects::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(180deg); }
+}
+
+/* General body styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-color: aliceblue;
+    color: darkslategray;
+    transition: all 0.3s ease;
+}
+
+/* Header styling */
+h1, h2 {
+    color: darkslategray;
+    border-bottom: 2px solid dodgerblue;
+    padding-bottom: 5px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 1.8em;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+/* Links styling */
+a {
+    color: dodgerblue;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: royalblue;
+    text-decoration: underline;
+}
+
+/* List styling */
+ul {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+/* Strong text styling */
+strong {
+    color: darkslategray;
+    font-weight: 600;
+}
+
+/* Project links styling */
+p strong a {
+    background: linear-gradient(45deg, dodgerblue, darkviolet);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+p strong a:hover {
+    background: linear-gradient(45deg, royalblue, indigo);
+    transform: scale(1.05);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .page-setup-container {
+        margin: 10px;
+        padding: 15px;
+    }
+    
+    .page-settings {
+        grid-template-columns: 1fr;
+    }
+    
+    .theme-options {
+        flex-direction: column;
+    }
+    
+    .about-intro,
+    .about-passion,
+    .about-projects {
+        padding: 15px;
+        font-size: 16px;
+    }
+}
+
+/* Print styles */
+@media print {
+    .page-setup-container {
+        display: none;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .about-intro,
+    .about-passion,
+    .about-projects {
+        background: white !important;
+        color: black !important;
+        border: 1px solid lightgray !important;
+        box-shadow: none !important;
+    }
+}

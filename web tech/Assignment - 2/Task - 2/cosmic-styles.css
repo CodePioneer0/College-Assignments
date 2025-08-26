@@ -1,0 +1,176 @@
+/* External CSS - Cosmic Base Styles */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap');
+
+/* Base cosmic styles */
+.cosmic-container {
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.star-field {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+}
+
+.star:nth-child(1) { top: 10%; left: 15%; width: 2px; height: 2px; }
+.star:nth-child(2) { top: 20%; left: 80%; width: 1px; height: 1px; }
+.star:nth-child(3) { top: 30%; left: 30%; width: 3px; height: 3px; }
+.star:nth-child(4) { top: 50%; left: 70%; width: 2px; height: 2px; }
+.star:nth-child(5) { top: 70%; left: 20%; width: 1px; height: 1px; }
+.star:nth-child(6) { top: 80%; left: 60%; width: 2px; height: 2px; }
+.star:nth-child(7) { top: 15%; left: 90%; width: 1px; height: 1px; }
+.star:nth-child(8) { top: 40%; left: 5%; width: 2px; height: 2px; }
+
+.content-wrapper {
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+}
+
+.cosmic-title {
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 1rem;
+    letter-spacing: 3px;
+}
+
+.cosmic-subtitle {
+    font-family: 'Space Mono', monospace;
+    text-align: center;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.semester-card {
+    margin: 2rem 0;
+    border-radius: 15px;
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+    border: 2px solid;
+    position: relative;
+}
+
+.semester-card:hover {
+    transform: translateY(-10px) scale(1.02);
+}
+
+.semester-legend {
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.subject-list {
+    list-style: none;
+    padding: 0;
+}
+
+.subject-item {
+    font-family: 'Space Mono', monospace;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.subject-item:hover {
+    padding-left: 1rem;
+    transform: translateX(10px);
+}
+
+.core-subject {
+    font-weight: bold;
+}
+
+.theme-nav {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    gap: 15px;
+}
+
+.theme-btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    text-decoration: none;
+    backdrop-filter: blur(10px);
+    border: 2px solid;
+}
+
+.theme-btn:hover {
+    transform: scale(1.1);
+}
+
+.summary-panel {
+    margin: 3rem auto;
+    max-width: 600px;
+    padding: 2rem;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    border: 2px solid;
+    text-align: center;
+}
+
+.summary-title {
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.summary-list {
+    list-style: none;
+    padding: 0;
+}
+
+.summary-item {
+    font-family: 'Space Mono', monospace;
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer {
+    text-align: center;
+    padding: 2rem;
+    font-family: 'Space Mono', monospace;
+    opacity: 0.7;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .theme-nav {
+        position: static;
+        justify-content: center;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+    }
+    
+    .semester-card {
+        margin: 1rem 0;
+        padding: 1rem;
+    }
+    
+    .cosmic-title {
+        font-size: 2rem;
+    }
+}

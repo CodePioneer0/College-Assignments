@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sayak Sen</title>
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Google Fonts for Default Theme -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&family=Libre+Baskerville:wght@400;700&family=Inconsolata:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <!-- Internal CSS -->
+  <style>
+    /* Default Theme Font Settings */
+    body {
+      font-family: 'Nunito', sans-serif;
+    }
+    
+    /* Page Setup Window Styles */
+    .page-setup-container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 2px solid lightgray;
+      border-radius: 10px;
+      background-color: whitesmoke;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    .page-setup-header {
+      background: linear-gradient(135deg, steelblue 0%, mediumpurple 100%);
+      color: white;
+      padding: 15px;
+      margin: -20px -20px 20px -20px;
+      border-radius: 8px 8px 0 0;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      font-family: 'Libre Baskerville', serif;
+    }
+    
+    .theme-selector {
+      margin: 20px 0;
+      padding: 15px;
+      background-color: lightcyan;
+      border-radius: 8px;
+      border-left: 4px solid dodgerblue;
+    }
+    
+    .theme-options {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+    
+    .theme-btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+    }
+    
+    .theme-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    
+    .theme-modern { background: linear-gradient(45deg, lightcoral, orangered); color: white; }
+    .theme-nature { background: linear-gradient(45deg, mediumseagreen, forestgreen); color: white; }
+    .theme-ocean { background: linear-gradient(45deg, dodgerblue, royalblue); color: white; }
+    .theme-sunset { background: linear-gradient(45deg, orange, darkorange); color: white; }
+    
+    /* About Me Paragraphs with Internal CSS */
+    .about-intro {
+      background-color: lightgray;
+      color: darkslategray;
+      text-align: center;
+      font-family: 'Libre Baskerville', serif;
+      font-size: 18px;
+      padding: 20px;
+      border-radius: 10px;
+      line-height: 1.6;
+      margin: 15px 0;
+      border: 3px solid silver;
+    }
+    
+    .about-passion {
+      background: linear-gradient(135deg, steelblue 0%, mediumpurple 100%);
+      color: white;
+      text-align: justify;
+      font-family: 'Nunito', sans-serif;
+      font-size: 16px;
+      padding: 25px;
+      border-radius: 15px;
+      line-height: 1.8;
+      margin: 15px 0;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+    
+    /* Page Layout Settings */
+    .page-settings {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 20px 0;
+    }
+    
+    .setting-group {
+      background-color: white;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid lightgray;
+    }
+    
+    .setting-group h4 {
+      margin: 0 0 10px 0;
+      color: darkslategray;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0;
+      border: 1px solid lightgray;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Page Setup Window Design -->
+  <div class="page-setup-container">
+    <div class="page-setup-header">
+      📄 Page Setup - Document Formatter
+    </div>
+    
+    <div class="theme-selector">
+      <h3>🎨 Choose Your Theme:</h3>
+      <div class="theme-options">
+        <a href="resume-modern.html" class="theme-btn theme-modern">Modern Red</a>
+        <a href="resume-nature.html" class="theme-btn theme-nature">Nature Green</a>
+        <a href="resume-ocean.html" class="theme-btn theme-ocean">Ocean Blue</a>
+        <a href="resume-sunset.html" class="theme-btn theme-sunset">Sunset Orange</a>
+        <a href="resume.html" class="theme-btn" style="background: lightgray; color: darkslategray;">Default Theme</a>
+      </div>
+    </div>
+    
+    <div class="page-settings">
+      <div class="setting-group">
+        <h4>📐 Page Dimensions</h4>
+        <label>Paper Size:</label>
+        <select class="form-control">
+          <option>A4 (8.27" × 11.69")</option>
+          <option>Letter (8.5" × 11")</option>
+          <option>Legal (8.5" × 14")</option>
+        </select>
+        
+        <label>Orientation:</label>
+        <select class="form-control">
+          <option>Portrait</option>
+          <option>Landscape</option>
+        </select>
+      </div>
+      
+      <div class="setting-group">
+        <h4>📏 Margins</h4>
+        <label>Top: <input type="number" class="form-control" value="1" step="0.1"> inches</label>
+        <label>Bottom: <input type="number" class="form-control" value="1" step="0.1"> inches</label>
+        <label>Left: <input type="number" class="form-control" value="1" step="0.1"> inches</label>
+        <label>Right: <input type="number" class="form-control" value="1" step="0.1"> inches</label>
+      </div>
+      
+      <div class="setting-group">
+        <h4>🎯 Headers & Footers</h4>
+        <label><input type="checkbox"> Different first page</label>
+        <label><input type="checkbox"> Different odd & even pages</label>
+        <label>Header from top: <input type="number" class="form-control" value="0.5" step="0.1"> inches</label>
+        <label>Footer from bottom: <input type="number" class="form-control" value="0.5" step="0.1"> inches</label>
+      </div>
+      
+      <div class="setting-group">
+        <h4>📝 Layout Options</h4>
+        <label>Vertical alignment:</label>
+        <select class="form-control">
+          <option>Top</option>
+          <option>Center</option>
+          <option>Justified</option>
+          <option>Bottom</option>
+        </select>
+        
+        <label><input type="checkbox"> Mirror margins</label>
+        <label><input type="checkbox"> Apply to whole document</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Me Section with Different CSS Styling Methods -->
+  <div style="max-width: 1000px; margin: 0 auto; padding: 20px;">
+    <h1 style="text-align: center; color: darkslategray; font-family: 'Libre Baskerville', serif; margin-bottom: 30px;">About Sayak Sen</h1>
+    
+    <!-- Paragraph 1: Internal CSS -->
+    <p class="about-intro">
+      Hello! I'm Sayak Sen, a passionate Computer Science student at the Indian Institute of Engineering Science and Technology, Shibpur. 
+      Currently pursuing my Bachelor of Technology with a stellar CGPA of 9.18/10.00, I'm deeply fascinated by the world of technology 
+      and its endless possibilities. My journey in computer science has been driven by curiosity, dedication, and an unwavering desire 
+      to solve complex problems through innovative solutions.
+    </p>
+    
+    <!-- Paragraph 2: Inline CSS -->
+    <p style="background: linear-gradient(45deg, lightpink 0%, mistyrose 50%, mistyrose 100%); 
+              color: darkslategray; 
+              text-align: left; 
+              font-family: 'Nunito', sans-serif; 
+              font-size: 17px; 
+              padding: 20px 25px; 
+              border-radius: 20px; 
+              line-height: 1.7; 
+              margin: 20px 0; 
+              border: 2px dashed crimson; 
+              box-shadow: inset 0 0 20px rgba(220, 20, 60, 0.1);">
+      What sets me apart is my comprehensive skill set spanning both frontend and backend development. I've mastered JavaScript (ES6+), 
+      Python, and C++, while building robust applications using Node.js, Express.js, and MongoDB. My experience with React.js and 
+      responsive design has enabled me to create user-friendly interfaces that provide seamless experiences. The combination of 
+      technical expertise and creative problem-solving allows me to bridge the gap between complex backend logic and intuitive 
+      user experiences.
+    </p>
+    
+    <!-- Paragraph 3: Internal CSS (different style) -->
+    <p class="about-passion">
+      Beyond academics, I'm a competitive programming enthusiast who has solved over 1000+ problems across various platforms. 
+      My LeetCode rating of 1509 and CodeChef rating of 1576 reflect my analytical thinking and algorithmic prowess. The highlight 
+      of my competitive journey was achieving Global Rank 375 in CodeChef Starters 166 among 25,000+ participants. This competitive 
+      spirit translates into my development work, where I constantly strive for optimal solutions and elegant code architecture.
+    </p>
+    
+    <!-- Paragraph 4: External CSS (will be applied from external file) -->
+    <p class="about-projects">
+      My portfolio showcases diverse projects that demonstrate real-world impact. The Invoice Automation System I engineered processes 
+      100+ payment records, reducing manual work by 80% through OAuth 2.0 authentication and Google Sheets API integration. 
+      My ClimateCompass Weather App serves 500+ daily users with real-time weather data from 10,000+ cities, featuring client-side 
+      caching that reduced API calls by 40%. Currently, I'm developing StreamVibes, a comprehensive video streaming platform with 
+      micro-tweet functionality, showcasing my ability to architect scalable, modular backend systems.
+    </p>
+    
+    <!-- Paragraph 5: Mixed styling with inline CSS -->
+    <p style="background-color: midnightblue; 
+              color: lightgray; 
+              text-align: center; 
+              font-family: 'Inconsolata', monospace; 
+              font-size: 15px; 
+              padding: 30px; 
+              border-radius: 5px; 
+              line-height: 1.9; 
+              margin: 20px 0; 
+              border-left: 5px solid teal; 
+              letter-spacing: 1px;
+              text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+      Looking ahead, I'm eager to contribute to innovative software engineering roles where I can apply my full-stack development 
+      skills, competitive programming mindset, and passion for creating scalable solutions. My goal is to work on cutting-edge 
+      projects that challenge conventional thinking and push the boundaries of what's possible in technology. I believe in 
+      continuous learning, collaborative problem-solving, and writing code that not only works but inspires others in the 
+      development community.
+    </p>
+  </div>
+
+  <h1>Sayak Sen</h1>
+  <p>
+    Howrah, West Bengal, India <br>
+    <a href="tel:+918017482733">+91-8017482733</a> | 
+    <a href="mailto:sayaksen8017@gmail.com">sayaksen8017@gmail.com</a> <br>
+    <a href="https://linkedin.com/in/sayak-sen-8a112412b/">linkedin.com/in/sayak-sen</a> | 
+    <a href="https://github.com/CodePioneer0">github.com/CodePioneer0</a> | 
+    <a href="https://leetcode.com/sayak11">leetcode.com/sayak11</a>
+  </p>
+
+  <h2>Summary</h2>
+  <p>
+    Computer Science undergraduate with strong foundation in full-stack development and algorithms.
+    Experienced in Node.js, Express.js, MongoDB, and RESTful APIs. Solved 1000+ competitive programming
+    problems. Seeking Software Engineering internship to contribute to scalable solutions.
+  </p>
+
+  <h2>Education</h2>
+  <p><strong>Indian Institute of Engineering Science and Technology, Shibpur</strong> (Aug 2023 – Aug 2027)</p>
+  <p><em>Bachelor of Technology in Computer Science and Technology</em> — CGPA: 9.18/10.00</p>
+
+  <h2>Technical Skills</h2>
+  <ul>
+    <li><strong>Languages:</strong> JavaScript (ES6+), Python, C++, Java, SQL, HTML5, CSS3</li>
+    <li><strong>Backend:</strong> Node.js, Express.js, RESTful APIs, JWT Authentication, OAuth 2.0</li>
+    <li><strong>Frontend:</strong> React.js, Bootstrap, Responsive Design, DOM Manipulation</li>
+    <li><strong>Database/Cloud:</strong> MongoDB, MySQL, Firebase, Google Cloud Platform, Mongoose ODM</li>
+    <li><strong>Tools:</strong> Git, GitHub, Docker, VS Code, Postman, npm, Vercel, CI/CD</li>
+  </ul>
+
+  <h2>Projects</h2>
+
+  <p><strong>Invoice Automation System</strong> 
+    <a href="https://github.com/CodePioneer0/Google-Sheets.git">[Link]</a> — Jan 2025
+  </p>
+  <ul>
+    <li>Engineered automated invoice generation system processing 100+ payment records, reducing manual work by 80%</li>
+    <li>Implemented OAuth 2.0 authentication and Google Sheets API integration for real-time data synchronization</li>
+    <li>Built RESTful API endpoints with Express.js for CRUD operations with error handling and validation</li>
+    <li>Developed PDF generation using PDFKit and email automation with Nodemailer for 50+ recipients</li>
+  </ul>
+
+  <p><strong>ClimateCompass Weather App</strong> 
+    <a href="https://climate-compass-a-weather-web-app.vercel.app/">[Link]</a> — Dec 2024
+  </p>
+  <ul>
+    <li>Developed responsive SPA serving 500+ daily users with real-time weather data from 10,000+ cities</li>
+    <li>Integrated third-party Weather API with asynchronous JavaScript achieving 99.9% uptime</li>
+    <li>Implemented client-side caching reducing API calls by 40% and improving performance</li>
+    <li>Deployed on Vercel with continuous deployment pipeline and environment variable management</li>
+  </ul>
+
+  <p><strong>StreamVibes Video Streaming & Micro-Tweet Platform</strong> 
+    <a href="https://github.com/CodePioneer0/Backend-repo.git">[Link]</a> — Ongoing
+  </p>
+  <ul>
+    <li>Architected modular REST backend: user auth, video upload/stream endpoints, tweet-style micro posts, playlists, likes, comments, subscriptions</li>
+    <li>Implemented secure auth (access + refresh JWT, httpOnly cookies, token rotation) and role-based protected routes</li>
+    <li>Built media pipeline: Multer temp storage → Cloudinary upload → cleanup, enabling scalable media handling</li>
+    <li>Designed MongoDB schemas & aggregation pipelines for channel stats, watch history, and engagement analytics</li>
+    <li>Added reusable error/response wrappers, validation middleware, and pagination-ready controllers for future scaling</li>
+  </ul>
+
+  <h2>Achievements</h2>
+  <ul>
+    <li><strong>Competitive Programming:</strong> Solved 1000+ problems across platforms | LeetCode Rating: 1509 (250+ problems) | CodeChef Rating: 1576</li>
+    <li><strong>CodeChef Global Rank 375</strong> in Starters 166 (out of 25,000+ participants)</li>
+    <li><strong>Technical Proficiency:</strong> Strong in Data Structures, Algorithms, Dynamic Programming, System Design</li>
+  </ul>
+
+  <h2>Relevant Coursework</h2>
+  <ul>
+    <li>Data Structures & Algorithms</li>
+    <li>Object-Oriented Programming</li>
+    <li>Database Management Systems</li>
+    <li>Operating Systems</li>
+    <li>Computer Networks</li>
+    <li>Web Development</li>
+  </ul>
+
+</body>
+</html>

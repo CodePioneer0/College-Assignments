@@ -2,11 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Sayak Sen</title>
+  <title>Sayak Sen - Ocean Blue Theme</title>
   <link rel="stylesheet" href="styles.css">
+  
+  <!-- Google Fonts for Ocean Theme -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Lora:wght@400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
   
   <!-- Internal CSS -->
   <style>
+    /* Ocean Blue Theme Styling */
+    body {
+      background: linear-gradient(135deg, dodgerblue 0%, royalblue 100%);
+      color: white;
+      font-family: 'Roboto', sans-serif;
+    }
+    
     /* Page Setup Window Styles */
     .page-setup-container {
       max-width: 800px;
@@ -14,12 +26,12 @@
       padding: 20px;
       border: 2px solid lightgray;
       border-radius: 10px;
-      background-color: whitesmoke;
+      background-color: rgba(255, 255, 255, 0.95);
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
     
     .page-setup-header {
-      background: linear-gradient(135deg, steelblue 0%, mediumpurple 100%);
+      background: linear-gradient(135deg, navy 0%, royalblue 100%);
       color: white;
       padding: 15px;
       margin: -20px -20px 20px -20px;
@@ -27,14 +39,15 @@
       text-align: center;
       font-size: 24px;
       font-weight: bold;
+      font-family: 'Lora', serif;
     }
     
     .theme-selector {
       margin: 20px 0;
       padding: 15px;
-      background-color: lightcyan;
+      background-color: lightblue;
       border-radius: 8px;
-      border-left: 4px solid dodgerblue;
+      border-left: 4px solid royalblue;
     }
     
     .theme-options {
@@ -52,6 +65,9 @@
       font-weight: bold;
       transition: all 0.3s ease;
       box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
     }
     
     .theme-btn:hover {
@@ -66,23 +82,23 @@
     
     /* About Me Paragraphs with Internal CSS */
     .about-intro {
-      background-color: lightgray;
-      color: darkslategray;
+      background-color: rgba(255, 255, 255, 0.9);
+      color: navy;
       text-align: center;
-      font-family: 'Georgia', serif;
+      font-family: 'Lora', serif;
       font-size: 18px;
       padding: 20px;
       border-radius: 10px;
       line-height: 1.6;
       margin: 15px 0;
-      border: 3px solid silver;
+      border: 3px solid skyblue;
     }
     
     .about-passion {
-      background: linear-gradient(135deg, steelblue 0%, mediumpurple 100%);
-      color: white;
+      background: rgba(255, 255, 255, 0.9);
+      color: navy;
       text-align: justify;
-      font-family: 'Arial', sans-serif;
+      font-family: 'Roboto', sans-serif;
       font-size: 16px;
       padding: 25px;
       border-radius: 15px;
@@ -104,11 +120,12 @@
       padding: 15px;
       border-radius: 8px;
       border: 1px solid lightgray;
+      color: navy;
     }
     
     .setting-group h4 {
       margin: 0 0 10px 0;
-      color: darkslategray;
+      color: navy;
     }
     
     .form-control {
@@ -118,6 +135,29 @@
       border: 1px solid lightgray;
       border-radius: 4px;
     }
+    
+    /* Content styling for better readability on blue background */
+    .content-wrapper {
+      background: rgba(255, 255, 255, 0.95);
+      color: navy;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 20px 0;
+      font-family: 'Roboto', sans-serif;
+    }
+    
+    h1, h2 {
+      color: navy;
+      font-family: 'Lora', serif;
+    }
+    
+    a {
+      color: royalblue;
+    }
+    
+    a:hover {
+      color: dodgerblue;
+    }
   </style>
 </head>
 <body>
@@ -125,16 +165,17 @@
   <!-- Page Setup Window Design -->
   <div class="page-setup-container">
     <div class="page-setup-header">
-      📄 Page Setup - Document Formatter
+      📄 Page Setup - Document Formatter (Ocean Blue Theme)
     </div>
     
     <div class="theme-selector">
       <h3>🎨 Choose Your Theme:</h3>
       <div class="theme-options">
-        <button class="theme-btn theme-modern" onclick="applyTheme('modern')">Modern Red</button>
-        <button class="theme-btn theme-nature" onclick="applyTheme('nature')">Nature Green</button>
-        <button class="theme-btn theme-ocean" onclick="applyTheme('ocean')">Ocean Blue</button>
-        <button class="theme-btn theme-sunset" onclick="applyTheme('sunset')">Sunset Orange</button>
+        <a href="resume-modern.html" class="theme-btn theme-modern">Modern Red</a>
+        <a href="resume-nature.html" class="theme-btn theme-nature">Nature Green</a>
+        <a href="resume-ocean.html" class="theme-btn theme-ocean">Ocean Blue</a>
+        <a href="resume-sunset.html" class="theme-btn theme-sunset">Sunset Orange</a>
+        <a href="resume.html" class="theme-btn" style="background: lightgray; color: darkslategray;">Default Theme</a>
       </div>
     </div>
     
@@ -189,7 +230,7 @@
 
   <!-- About Me Section with Different CSS Styling Methods -->
   <div style="max-width: 1000px; margin: 0 auto; padding: 20px;">
-    <h1 style="text-align: center; color: darkslategray; font-family: 'Georgia', serif; margin-bottom: 30px;">About Sayak Sen</h1>
+    <h1 style="text-align: center; color: white; font-family: 'Lora', serif; margin-bottom: 30px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">About Sayak Sen</h1>
     
     <!-- Paragraph 1: Internal CSS -->
     <p class="about-intro">
@@ -200,17 +241,17 @@
     </p>
     
     <!-- Paragraph 2: Inline CSS -->
-    <p style="background: linear-gradient(45deg, lightpink 0%, mistyrose 50%, mistyrose 100%); 
-              color: darkslategray; 
+    <p style="background: rgba(255, 255, 255, 0.9); 
+              color: navy; 
               text-align: left; 
-              font-family: 'Verdana', sans-serif; 
+              font-family: 'Roboto', sans-serif; 
               font-size: 17px; 
               padding: 20px 25px; 
               border-radius: 20px; 
               line-height: 1.7; 
               margin: 20px 0; 
-              border: 2px dashed crimson; 
-              box-shadow: inset 0 0 20px rgba(220, 20, 60, 0.1);">
+              border: 2px dashed royalblue; 
+              box-shadow: inset 0 0 20px rgba(65, 105, 225, 0.1);">
       What sets me apart is my comprehensive skill set spanning both frontend and backend development. I've mastered JavaScript (ES6+), 
       Python, and C++, while building robust applications using Node.js, Express.js, and MongoDB. My experience with React.js and 
       responsive design has enabled me to create user-friendly interfaces that provide seamless experiences. The combination of 
@@ -236,18 +277,18 @@
     </p>
     
     <!-- Paragraph 5: Mixed styling with inline CSS -->
-    <p style="background-color: midnightblue; 
-              color: lightgray; 
+    <p style="background-color: rgba(255, 255, 255, 0.9); 
+              color: navy; 
               text-align: center; 
-              font-family: 'Courier New', monospace; 
+              font-family: 'Fira Code', monospace; 
               font-size: 15px; 
               padding: 30px; 
               border-radius: 5px; 
               line-height: 1.9; 
               margin: 20px 0; 
-              border-left: 5px solid teal; 
+              border-left: 5px solid royalblue; 
               letter-spacing: 1px;
-              text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+              text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">
       Looking ahead, I'm eager to contribute to innovative software engineering roles where I can apply my full-stack development 
       skills, competitive programming mindset, and passion for creating scalable solutions. My goal is to work on cutting-edge 
       projects that challenge conventional thinking and push the boundaries of what's possible in technology. I believe in 
@@ -256,154 +297,87 @@
     </p>
   </div>
 
-  <h1>Sayak Sen</h1>
-  <p>
-    Howrah, West Bengal, India <br>
-    <a href="tel:+918017482733">+91-8017482733</a> | 
-    <a href="mailto:sayaksen8017@gmail.com">sayaksen8017@gmail.com</a> <br>
-    <a href="https://linkedin.com/in/sayak-sen-8a112412b/">linkedin.com/in/sayak-sen</a> | 
-    <a href="https://github.com/CodePioneer0">github.com/CodePioneer0</a> | 
-    <a href="https://leetcode.com/sayak11">leetcode.com/sayak11</a>
-  </p>
+  <div class="content-wrapper">
+    <h1>Sayak Sen</h1>
+    <p>
+      Howrah, West Bengal, India <br>
+      <a href="tel:+918017482733">+91-8017482733</a> | 
+      <a href="mailto:sayaksen8017@gmail.com">sayaksen8017@gmail.com</a> <br>
+      <a href="https://linkedin.com/in/sayak-sen-8a112412b/">linkedin.com/in/sayak-sen</a> | 
+      <a href="https://github.com/CodePioneer0">github.com/CodePioneer0</a> | 
+      <a href="https://leetcode.com/sayak11">leetcode.com/sayak11</a>
+    </p>
 
-  <h2>Summary</h2>
-  <p>
-    Computer Science undergraduate with strong foundation in full-stack development and algorithms.
-    Experienced in Node.js, Express.js, MongoDB, and RESTful APIs. Solved 1000+ competitive programming
-    problems. Seeking Software Engineering internship to contribute to scalable solutions.
-  </p>
+    <h2>Summary</h2>
+    <p>
+      Computer Science undergraduate with strong foundation in full-stack development and algorithms.
+      Experienced in Node.js, Express.js, MongoDB, and RESTful APIs. Solved 1000+ competitive programming
+      problems. Seeking Software Engineering internship to contribute to scalable solutions.
+    </p>
 
-  <h2>Education</h2>
-  <p><strong>Indian Institute of Engineering Science and Technology, Shibpur</strong> (Aug 2023 – Aug 2027)</p>
-  <p><em>Bachelor of Technology in Computer Science and Technology</em> — CGPA: 9.18/10.00</p>
+    <h2>Education</h2>
+    <p><strong>Indian Institute of Engineering Science and Technology, Shibpur</strong> (Aug 2023 – Aug 2027)</p>
+    <p><em>Bachelor of Technology in Computer Science and Technology</em> — CGPA: 9.18/10.00</p>
 
-  <h2>Technical Skills</h2>
-  <ul>
-    <li><strong>Languages:</strong> JavaScript (ES6+), Python, C++, Java, SQL, HTML5, CSS3</li>
-    <li><strong>Backend:</strong> Node.js, Express.js, RESTful APIs, JWT Authentication, OAuth 2.0</li>
-    <li><strong>Frontend:</strong> React.js, Bootstrap, Responsive Design, DOM Manipulation</li>
-    <li><strong>Database/Cloud:</strong> MongoDB, MySQL, Firebase, Google Cloud Platform, Mongoose ODM</li>
-    <li><strong>Tools:</strong> Git, GitHub, Docker, VS Code, Postman, npm, Vercel, CI/CD</li>
-  </ul>
+    <h2>Technical Skills</h2>
+    <ul>
+      <li><strong>Languages:</strong> JavaScript (ES6+), Python, C++, Java, SQL, HTML5, CSS3</li>
+      <li><strong>Backend:</strong> Node.js, Express.js, RESTful APIs, JWT Authentication, OAuth 2.0</li>
+      <li><strong>Frontend:</strong> React.js, Bootstrap, Responsive Design, DOM Manipulation</li>
+      <li><strong>Database/Cloud:</strong> MongoDB, MySQL, Firebase, Google Cloud Platform, Mongoose ODM</li>
+      <li><strong>Tools:</strong> Git, GitHub, Docker, VS Code, Postman, npm, Vercel, CI/CD</li>
+    </ul>
 
-  <h2>Projects</h2>
+    <h2>Projects</h2>
 
-  <p><strong>Invoice Automation System</strong> 
-    <a href="https://github.com/CodePioneer0/Google-Sheets.git">[Link]</a> — Jan 2025
-  </p>
-  <ul>
-    <li>Engineered automated invoice generation system processing 100+ payment records, reducing manual work by 80%</li>
-    <li>Implemented OAuth 2.0 authentication and Google Sheets API integration for real-time data synchronization</li>
-    <li>Built RESTful API endpoints with Express.js for CRUD operations with error handling and validation</li>
-    <li>Developed PDF generation using PDFKit and email automation with Nodemailer for 50+ recipients</li>
-  </ul>
+    <p><strong>Invoice Automation System</strong> 
+      <a href="https://github.com/CodePioneer0/Google-Sheets.git">[Link]</a> — Jan 2025
+    </p>
+    <ul>
+      <li>Engineered automated invoice generation system processing 100+ payment records, reducing manual work by 80%</li>
+      <li>Implemented OAuth 2.0 authentication and Google Sheets API integration for real-time data synchronization</li>
+      <li>Built RESTful API endpoints with Express.js for CRUD operations with error handling and validation</li>
+      <li>Developed PDF generation using PDFKit and email automation with Nodemailer for 50+ recipients</li>
+    </ul>
 
-  <p><strong>ClimateCompass Weather App</strong> 
-    <a href="https://climate-compass-a-weather-web-app.vercel.app/">[Link]</a> — Dec 2024
-  </p>
-  <ul>
-    <li>Developed responsive SPA serving 500+ daily users with real-time weather data from 10,000+ cities</li>
-    <li>Integrated third-party Weather API with asynchronous JavaScript achieving 99.9% uptime</li>
-    <li>Implemented client-side caching reducing API calls by 40% and improving performance</li>
-    <li>Deployed on Vercel with continuous deployment pipeline and environment variable management</li>
-  </ul>
+    <p><strong>ClimateCompass Weather App</strong> 
+      <a href="https://climate-compass-a-weather-web-app.vercel.app/">[Link]</a> — Dec 2024
+    </p>
+    <ul>
+      <li>Developed responsive SPA serving 500+ daily users with real-time weather data from 10,000+ cities</li>
+      <li>Integrated third-party Weather API with asynchronous JavaScript achieving 99.9% uptime</li>
+      <li>Implemented client-side caching reducing API calls by 40% and improving performance</li>
+      <li>Deployed on Vercel with continuous deployment pipeline and environment variable management</li>
+    </ul>
 
-  <p><strong>StreamVibes Video Streaming & Micro-Tweet Platform</strong> 
-    <a href="https://github.com/CodePioneer0/Backend-repo.git">[Link]</a> — Ongoing
-  </p>
-  <ul>
-    <li>Architected modular REST backend: user auth, video upload/stream endpoints, tweet-style micro posts, playlists, likes, comments, subscriptions</li>
-    <li>Implemented secure auth (access + refresh JWT, httpOnly cookies, token rotation) and role-based protected routes</li>
-    <li>Built media pipeline: Multer temp storage → Cloudinary upload → cleanup, enabling scalable media handling</li>
-    <li>Designed MongoDB schemas & aggregation pipelines for channel stats, watch history, and engagement analytics</li>
-    <li>Added reusable error/response wrappers, validation middleware, and pagination-ready controllers for future scaling</li>
-  </ul>
+    <p><strong>StreamVibes Video Streaming & Micro-Tweet Platform</strong> 
+      <a href="https://github.com/CodePioneer0/Backend-repo.git">[Link]</a> — Ongoing
+    </p>
+    <ul>
+      <li>Architected modular REST backend: user auth, video upload/stream endpoints, tweet-style micro posts, playlists, likes, comments, subscriptions</li>
+      <li>Implemented secure auth (access + refresh JWT, httpOnly cookies, token rotation) and role-based protected routes</li>
+      <li>Built media pipeline: Multer temp storage → Cloudinary upload → cleanup, enabling scalable media handling</li>
+      <li>Designed MongoDB schemas & aggregation pipelines for channel stats, watch history, and engagement analytics</li>
+      <li>Added reusable error/response wrappers, validation middleware, and pagination-ready controllers for future scaling</li>
+    </ul>
 
-  <h2>Achievements</h2>
-  <ul>
-    <li><strong>Competitive Programming:</strong> Solved 1000+ problems across platforms | LeetCode Rating: 1509 (250+ problems) | CodeChef Rating: 1576</li>
-    <li><strong>CodeChef Global Rank 375</strong> in Starters 166 (out of 25,000+ participants)</li>
-    <li><strong>Technical Proficiency:</strong> Strong in Data Structures, Algorithms, Dynamic Programming, System Design</li>
-  </ul>
+    <h2>Achievements</h2>
+    <ul>
+      <li><strong>Competitive Programming:</strong> Solved 1000+ problems across platforms | LeetCode Rating: 1509 (250+ problems) | CodeChef Rating: 1576</li>
+      <li><strong>CodeChef Global Rank 375</strong> in Starters 166 (out of 25,000+ participants)</li>
+      <li><strong>Technical Proficiency:</strong> Strong in Data Structures, Algorithms, Dynamic Programming, System Design</li>
+    </ul>
 
-  <h2>Relevant Coursework</h2>
-  <ul>
-    <li>Data Structures & Algorithms</li>
-    <li>Object-Oriented Programming</li>
-    <li>Database Management Systems</li>
-    <li>Operating Systems</li>
-    <li>Computer Networks</li>
-    <li>Web Development</li>
-  </ul>
-
-  <script>
-    function applyTheme(themeName) {
-      const body = document.body;
-      // Remove existing theme classes
-      body.className = body.className.replace(/theme-\w+/g, '');
-      // Add new theme class
-      body.classList.add('theme-' + themeName);
-      
-      // Apply theme-specific styles
-      switch(themeName) {
-        case 'modern':
-          body.style.background = 'linear-gradient(135deg, lightcoral 0%, orangered 100%)';
-          body.style.color = 'white';
-          break;
-        case 'nature':
-          body.style.background = 'linear-gradient(135deg, mediumseagreen 0%, forestgreen 100%)';
-          body.style.color = 'white';
-          break;
-        case 'ocean':
-          body.style.background = 'linear-gradient(135deg, dodgerblue 0%, royalblue 100%)';
-          body.style.color = 'white';
-          break;
-        case 'sunset':
-          body.style.background = 'linear-gradient(135deg, orange 0%, darkorange 100%)';
-          body.style.color = 'white';
-          break;
-        default:
-          body.style.backgroundColor = 'white';
-          body.style.color = 'darkslategray';
-      }
-      
-      // Show confirmation
-      const notification = document.createElement('div');
-      notification.textContent = `Applied ${themeName.charAt(0).toUpperCase() + themeName.slice(1)} theme!`;
-      notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: mediumseagreen;
-        color: white;
-        padding: 10px 20px;
-        border-radius: 5px;
-        z-index: 1000;
-        animation: slideIn 0.3s ease;
-      `;
-      document.body.appendChild(notification);
-      
-      setTimeout(() => {
-        notification.remove();
-      }, 2000);
-    }
-    
-    // Add CSS animation for notification
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes slideIn {
-        from {
-          transform: translateX(100%);
-          opacity: 0;
-        }
-        to {
-          transform: translateX(0);
-          opacity: 1;
-        }
-      }
-    `;
-    document.head.appendChild(style);
-  </script>
+    <h2>Relevant Coursework</h2>
+    <ul>
+      <li>Data Structures & Algorithms</li>
+      <li>Object-Oriented Programming</li>
+      <li>Database Management Systems</li>
+      <li>Operating Systems</li>
+      <li>Computer Networks</li>
+      <li>Web Development</li>
+    </ul>
+  </div>
 
 </body>
 </html>

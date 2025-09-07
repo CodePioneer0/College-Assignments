@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyScript Addition Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pyscript/2023.03.1/pyscript.css" />
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/pyscript/2023.03.1/pyscript.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .calculator-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #4c51bf;
+            font-size: 2.2em;
+            font-weight: 300;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #4a5568;
+            font-size: 1.1em;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .button-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .result-container {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f7fafc;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #result {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #2d3748;
+            text-align: center;
+        }
+
+        .python-badge {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #718096;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator-container">
+        <h1>🐍 PyScript Calculator</h1>
+        
+        <div class="input-group">
+            <label for="num1">First Number:</label>
+            <input type="number" id="num1" placeholder="Enter first number" step="any">
+        </div>
+        
+        <div class="input-group">
+            <label for="num2">Second Number:</label>
+            <input type="number" id="num2" placeholder="Enter second number" step="any">
+        </div>
+        
+        <div class="button-container">
+            <button py-click="calculate_sum()">Add Numbers</button>
+        </div>
+        
+        <div class="result-container">
+            <div id="result">Enter two numbers and click "Add Numbers" to see the result</div>
+        </div>
+        
+        <div class="python-badge">
+            Powered by Python in the browser with PyScript 🚀
+        </div>
+    </div>
+
+    <py-script>
+def calculate_sum():
+    """Calculate the sum of two numbers and display the result"""
+    try:
+        # Get input values from HTML elements
+        num1_element = Element("num1")
+        num2_element = Element("num2")
+        result_element = Element("result")
+        
+        # Get the values and convert to float
+        num1_value = num1_element.element.value
+        num2_value = num2_element.element.value
+        
+        # Validate inputs
+        if not num1_value or not num2_value:
+            result_element.element.innerHTML = "⚠️ Please enter both numbers"
+            return
+        
+        try:
+            num1 = float(num1_value)
+            num2 = float(num2_value)
+        except ValueError:
+            result_element.element.innerHTML = "❌ Please enter valid numbers"
+            return
+        
+        # Perform addition
+        sum_result = num1 + num2
+        
+        # Format the result nicely
+        if sum_result == int(sum_result):
+            formatted_result = f"{int(sum1)} + {int(num2)} = {int(sum_result)}"
+        else:
+            formatted_result = f"{num1} + {num2} = {sum_result}"
+        
+        # Display result with some flair
+        result_element.element.innerHTML = f"🎉 {formatted_result}"
+        
+    except Exception as e:
+        result_element.element.innerHTML = f"❌ Error: Something went wrong"
+        print(f"Error in calculate_sum: {e}")
+
+# Initialize the calculator when page loads
+def init_calculator():
+    result_element = Element("result")
+    result_element.element.innerHTML = "Ready to calculate! Enter two numbers above ⬆️"
+
+# Call initialization
+init_calculator()
+    </py-script>
+</body>
+</html>

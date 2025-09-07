@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CST Department Faculty Profiles - IIEST</title>
+</head>
+<body>
+    <header>
+        <h1>Faculty Members - Computer Science & Technology Department</h1>
+        <h2>Indian Institute of Engineering Science and Technology (IIEST)</h2>
+    </header>
+
+    <main>
+        <section class="faculty-search">
+            <h3>Search Faculty Profile</h3>
+            <input type="text" id="facultySearch" placeholder="Enter faculty name to search...">
+            <button onclick="searchFaculty()">Search</button>
+            <button onclick="showAllProfiles()">Show All</button>
+        </section>
+
+        <section id="facultyProfiles" class="profiles-container">
+            <!-- Dr. Abhik Mukherjee Profile -->
+            <div class="faculty-profile" id="abhik-mukherjee">
+                <div class="profile-header">
+                    <div class="profile-image">
+                        <img src="images/abhik-mukherjee.jpg" alt="Dr. Abhik Mukherjee" width="200" height="250">
+                    </div>
+                    <div class="profile-info">
+                        <h3 class="faculty-name">Dr. Abhik Mukherjee</h3>
+                        <p class="designation">Associate Professor</p>
+                        <p class="department">Computer Science & Technology</p>
+                    </div>
+                </div>
+                <div class="profile-details">
+                    <div class="contact-info">
+                        <h4>Contact Information</h4>
+                        <p><strong>Email:</strong> <a href="mailto:abhik@cs.iiests.ac.in">abhik@cs.iiests.ac.in</a></p>
+                        <p><strong>Phone:</strong> +91-33-26684561/62/63 Ext</p>
+                    </div>
+                    <div class="qualifications">
+                        <h4>Highest Qualification</h4>
+                        <p>Ph.D. in Computer Science</p>
+                    </div>
+                    <div class="current-subjects">
+                        <h4>Subjects Teaching (Current Semester)</h4>
+                        <ul>
+                            <li>Data Structures and Algorithms</li>
+                            <li>Computer Networks</li>
+                            <li>Advanced Database Systems</li>
+                        </ul>
+                    </div>
+                    <div class="research-areas">
+                        <h4>Research Areas</h4>
+                        <ul>
+                            <li>Machine Learning</li>
+                            <li>Data Mining</li>
+                            <li>Computer Vision</li>
+                            <li>Pattern Recognition</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dr. Amit Biswas Profile -->
+            <div class="faculty-profile" id="amit-biswas">
+                <div class="profile-header">
+                    <div class="profile-image">
+                        <img src="images/amit-biswas.jpg" alt="Dr. Amit Biswas" width="200" height="250">
+                    </div>
+                    <div class="profile-info">
+                        <h3 class="faculty-name">Dr. Amit Biswas</h3>
+                        <p class="designation">Assistant Professor</p>
+                        <p class="department">Computer Science & Technology</p>
+                    </div>
+                </div>
+                <div class="profile-details">
+                    <div class="contact-info">
+                        <h4>Contact Information</h4>
+                        <p><strong>Email:</strong> <a href="mailto:amitbiswas@cs.iiests.ac.in">amitbiswas@cs.iiests.ac.in</a></p>
+                    </div>
+                    <div class="qualifications">
+                        <h4>Highest Qualification</h4>
+                        <p>Ph.D. in Computer Science & Engineering</p>
+                    </div>
+                    <div class="current-subjects">
+                        <h4>Subjects Teaching (Current Semester)</h4>
+                        <ul>
+                            <li>Software Engineering</li>
+                            <li>Object Oriented Programming</li>
+                            <li>Web Technologies</li>
+                        </ul>
+                    </div>
+                    <div class="research-areas">
+                        <h4>Research Areas</h4>
+                        <ul>
+                            <li>Software Testing</li>
+                            <li>Software Quality Assurance</li>
+                            <li>Distributed Systems</li>
+                            <li>Cloud Computing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dr. Apurba Sarkar Profile -->
+            <div class="faculty-profile" id="apurba-sarkar">
+                <div class="profile-header">
+                    <div class="profile-image">
+                        <img src="images/apurba-sarkar.jpg" alt="Dr. Apurba Sarkar" width="200" height="250">
+                    </div>
+                    <div class="profile-info">
+                        <h3 class="faculty-name">Dr. Apurba Sarkar</h3>
+                        <p class="designation">Head & Associate Professor</p>
+                        <p class="department">Computer Science & Technology</p>
+                    </div>
+                </div>
+                <div class="profile-details">
+                    <div class="contact-info">
+                        <h4>Contact Information</h4>
+                        <p><strong>Email:</strong> <a href="mailto:apurba@cs.iiests.ac.in">apurba@cs.iiests.ac.in</a></p>
+                        <p><strong>Phone:</strong> 03322668-576</p>
+                    </div>
+                    <div class="qualifications">
+                        <h4>Highest Qualification</h4>
+                        <p>Ph.D. in Computer Science & Engineering</p>
+                    </div>
+                    <div class="current-subjects">
+                        <h4>Subjects Teaching (Current Semester)</h4>
+                        <ul>
+                            <li>Theory of Computation</li>
+                            <li>Compiler Design</li>
+                            <li>Advanced Algorithms</li>
+                        </ul>
+                    </div>
+                    <div class="research-areas">
+                        <h4>Research Areas</h4>
+                        <ul>
+                            <li>Computational Complexity</li>
+                            <li>Algorithm Design</li>
+                            <li>Graph Theory</li>
+                            <li>Optimization Techniques</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dr. Ashish Kumar Layek Profile -->
+            <div class="faculty-profile" id="ashish-kumar-layek">
+                <div class="profile-header">
+                    <div class="profile-image">
+                        <img src="images/ashish-kumar-layek.jpg" alt="Dr. Ashish Kumar Layek" width="200" height="250">
+                    </div>
+                    <div class="profile-info">
+                        <h3 class="faculty-name">Dr. Ashish Kumar Layek</h3>
+                        <p class="designation">Assistant Professor</p>
+                        <p class="department">Computer Science & Technology</p>
+                    </div>
+                </div>
+                <div class="profile-details">
+                    <div class="contact-info">
+                        <h4>Contact Information</h4>
+                        <p><strong>Email:</strong> <a href="mailto:ashish@cs.iiests.ac.in">ashish@cs.iiests.ac.in</a></p>
+                        <p><strong>Phone:</strong> (033) 26684561(extn-576)</p>
+                    </div>
+                    <div class="qualifications">
+                        <h4>Highest Qualification</h4>
+                        <p>Ph.D. in Computer Science & Engineering</p>
+                    </div>
+                    <div class="current-subjects">
+                        <h4>Subjects Teaching (Current Semester)</h4>
+                        <ul>
+                            <li>Database Management Systems</li>
+                            <li>Computer Graphics</li>
+                            <li>Information Security</li>
+                        </ul>
+                    </div>
+                    <div class="research-areas">
+                        <h4>Research Areas</h4>
+                        <ul>
+                            <li>Cryptography</li>
+                            <li>Network Security</li>
+                            <li>Computer Graphics</li>
+                            <li>Image Processing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dr. Asit Kumar Das Profile -->
+            <div class="faculty-profile" id="asit-kumar-das">
+                <div class="profile-header">
+                    <div class="profile-image">
+                        <img src="images/asit-kumar-das.jpg" alt="Dr. Asit Kumar Das" width="200" height="250">
+                    </div>
+                    <div class="profile-info">
+                        <h3 class="faculty-name">Dr. Asit Kumar Das</h3>
+                        <p class="designation">Professor</p>
+                        <p class="department">Computer Science & Technology</p>
+                    </div>
+                </div>
+                <div class="profile-details">
+                    <div class="contact-info">
+                        <h4>Contact Information</h4>
+                        <p><strong>Email:</strong> <a href="mailto:akdas@cs.iiests.ac.in">akdas@cs.iiests.ac.in</a></p>
+                        <p><strong>Email (Alternate):</strong> <a href="mailto:dasasitkumar@gmail.com">dasasitkumar@gmail.com</a></p>
+                        <p><strong>Phone:</strong> (033) 26684561(extn-576)</p>
+                    </div>
+                    <div class="qualifications">
+                        <h4>Highest Qualification</h4>
+                        <p>Ph.D. in Computer Science & Engineering</p>
+                    </div>
+                    <div class="current-subjects">
+                        <h4>Subjects Teaching (Current Semester)</h4>
+                        <ul>
+                            <li>Computer Networks</li>
+                            <li>Network Security</li>
+                            <li>Wireless Communication</li>
+                        </ul>
+                    </div>
+                    <div class="research-areas">
+                        <h4>Research Areas</h4>
+                        <ul>
+                            <li>Wireless Sensor Networks</li>
+                            <li>Mobile Computing</li>
+                            <li>Internet of Things (IoT)</li>
+                            <li>Network Security</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dr. Biplab K. Sikdar Profile -->
+            <div class="faculty-profile" id="biplab-k-sikdar">
+                <div class="profile-header">
+                    <div class="profile-image">
+                        <img src="images/biplab-k-sikdar.jpg" alt="Dr. Biplab K. Sikdar" width="200" height="250">
+                    </div>
+                    <div class="profile-info">
+                        <h3 class="faculty-name">Dr. Biplab Kumar Sikdar</h3>
+                        <p class="designation">Professor</p>
+                        <p class="department">Computer Science & Technology</p>
+                    </div>
+                </div>
+                <div class="profile-details">
+                    <div class="contact-info">
+                        <h4>Contact Information</h4>
+                        <p><strong>Email:</strong> <a href="mailto:biplab@cs.iiests.ac.in">biplab@cs.iiests.ac.in</a></p>
+                        <p><strong>Phone:</strong> +91-33-26684561/62/63 Ext.</p>
+                    </div>
+                    <div class="qualifications">
+                        <h4>Highest Qualification</h4>
+                        <p>Ph.D. in Computer Science & Engineering</p>
+                    </div>
+                    <div class="current-subjects">
+                        <h4>Subjects Teaching (Current Semester)</h4>
+                        <ul>
+                            <li>VLSI Design</li>
+                            <li>Digital System Design</li>
+                            <li>Computer Architecture</li>
+                        </ul>
+                    </div>
+                    <div class="research-areas">
+                        <h4>Research Areas</h4>
+                        <ul>
+                            <li>VLSI Design</li>
+                            <li>Cellular Automata</li>
+                            <li>Digital System Design</li>
+                            <li>Fault Tolerant Computing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dr. Jaya Sil Profile -->
+            <div class="faculty-profile" id="jaya-sil">
+                <div class="profile-header">
+                    <div class="profile-image">
+                        <img src="images/jaya-sil.jpg" alt="Dr. Jaya Sil" width="200" height="250">
+                    </div>
+                    <div class="profile-info">
+                        <h3 class="faculty-name">Dr. Jaya Sil</h3>
+                        <p class="designation">Professor</p>
+                        <p class="department">Computer Science & Technology</p>
+                    </div>
+                </div>
+                <div class="profile-details">
+                    <div class="contact-info">
+                        <h4>Contact Information</h4>
+                        <p><strong>Email:</strong> <a href="mailto:js@cs.iiests.ac.in">js@cs.iiests.ac.in</a></p>
+                        <p><strong>Email (Alternate):</strong> <a href="mailto:jayaiiests@gmail.com">jayaiiests@gmail.com</a></p>
+                        <p><strong>Phone:</strong> 033 2668 4561 (Ext. 63)</p>
+                    </div>
+                    <div class="qualifications">
+                        <h4>Highest Qualification</h4>
+                        <p>Ph.D. in Computer Science & Engineering</p>
+                    </div>
+                    <div class="current-subjects">
+                        <h4>Subjects Teaching (Current Semester)</h4>
+                        <ul>
+                            <li>Artificial Intelligence</li>
+                            <li>Machine Learning</li>
+                            <li>Data Mining</li>
+                        </ul>
+                    </div>
+                    <div class="research-areas">
+                        <h4>Research Areas</h4>
+                        <ul>
+                            <li>Machine Learning</li>
+                            <li>Pattern Recognition</li>
+                            <li>Data Mining</li>
+                            <li>Bioinformatics</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dr. Malay Kule Profile -->
+            <div class="faculty-profile" id="malay-kule">
+                <div class="profile-header">
+                    <div class="profile-image">
+                        <img src="images/malay-kule.jpg" alt="Dr. Malay Kule" width="200" height="250">
+                    </div>
+                    <div class="profile-info">
+                        <h3 class="faculty-name">Dr. Malay Kule</h3>
+                        <p class="designation">Assistant Professor</p>
+                        <p class="department">Computer Science & Technology</p>
+                    </div>
+                </div>
+                <div class="profile-details">
+                    <div class="contact-info">
+                        <h4>Contact Information</h4>
+                        <p><strong>Email:</strong> <a href="mailto:malay@cs.iiests.ac.in">malay@cs.iiests.ac.in</a></p>
+                        <p><strong>Email (Alternate):</strong> <a href="mailto:malay.cs@faculty.iiests.ac.in">malay.cs@faculty.iiests.ac.in</a></p>
+                        <p><strong>Phone:</strong> +91-033-26686151</p>
+                    </div>
+                    <div class="qualifications">
+                        <h4>Highest Qualification</h4>
+                        <p>Ph.D. in Computer Science & Engineering</p>
+                    </div>
+                    <div class="current-subjects">
+                        <h4>Subjects Teaching (Current Semester)</h4>
+                        <ul>
+                            <li>Software Engineering</li>
+                            <li>Database Management Systems</li>
+                            <li>Web Technologies</li>
+                        </ul>
+                    </div>
+                    <div class="research-areas">
+                        <h4>Research Areas</h4>
+                        <ul>
+                            <li>Software Engineering</li>
+                            <li>Software Testing</li>
+                            <li>Database Systems</li>
+                            <li>Web Technologies</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function searchFaculty() {
+            const searchTerm = document.getElementById('facultySearch').value.toLowerCase();
+            const profiles = document.querySelectorAll('.faculty-profile');
+            
+            profiles.forEach(profile => {
+                const facultyName = profile.querySelector('.faculty-name').textContent.toLowerCase();
+                if (facultyName.includes(searchTerm)) {
+                    profile.style.display = 'block';
+                } else {
+                    profile.style.display = 'none';
+                }
+            });
+        }
+
+        function showAllProfiles() {
+            const profiles = document.querySelectorAll('.faculty-profile');
+            profiles.forEach(profile => {
+                profile.style.display = 'block';
+            });
+            document.getElementById('facultySearch').value = '';
+        }
+
+        // Add event listener for Enter key in search input
+        document.getElementById('facultySearch').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchFaculty();
+            }
+        });
+    </script>
+</body>
+</html>

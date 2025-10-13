@@ -1,0 +1,467 @@
+/* Ocean Theme - styles-ocean.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(135deg, #006994 0%, #0077be 50%, #4da6ff 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+/* Header Styles */
+header {
+    background: rgba(0, 105, 148, 0.95);
+    padding: 2rem 0;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    margin-bottom: 2rem;
+    backdrop-filter: blur(10px);
+    border-bottom: 3px solid #00bcd4;
+}
+
+header h1 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+header h2 {
+    color: #e1f5fe;
+    font-size: 1.4rem;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+/* Main Container */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Theme Switcher */
+.theme-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.theme-btn {
+    background: linear-gradient(45deg, #00bcd4, #0097a7);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0, 188, 212, 0.3);
+    transition: all 0.3s ease;
+}
+
+.theme-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 188, 212, 0.4);
+}
+
+/* Search Section */
+.faculty-search {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 188, 212, 0.3);
+}
+
+.faculty-search h3 {
+    color: #006994;
+    margin-bottom: 1.5rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+#facultySearch {
+    padding: 15px 25px;
+    border: 2px solid #b3e5fc;
+    border-radius: 30px;
+    width: 350px;
+    margin-right: 15px;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+    background: rgba(255,255,255,0.9);
+}
+
+#facultySearch:focus {
+    border-color: #00bcd4;
+    box-shadow: 0 0 20px rgba(0, 188, 212, 0.3);
+    background: white;
+}
+
+#facultySearch::placeholder {
+    color: #81d4fa;
+}
+
+/* Button Styles */
+button {
+    padding: 15px 30px;
+    margin: 0 8px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    outline: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button:first-of-type {
+    background: linear-gradient(45deg, #00bcd4, #0097a7);
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 188, 212, 0.3);
+}
+
+button:last-of-type {
+    background: linear-gradient(45deg, #4fc3f7, #29b6f6);
+    color: white;
+    box-shadow: 0 4px 15px rgba(79, 195, 247, 0.3);
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* Profiles Container */
+.profiles-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(520px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+/* Faculty Profile Cards */
+.faculty-profile {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    transition: all 0.4s ease;
+    border: 1px solid rgba(0, 188, 212, 0.2);
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+
+.faculty-profile::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #00bcd4, #0097a7, #4fc3f7, #29b6f6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.faculty-profile:hover::before {
+    opacity: 1;
+}
+
+.faculty-profile:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+
+/* Profile Header */
+.profile-header {
+    background: linear-gradient(135deg, #00bcd4, #0097a7);
+    color: white;
+    padding: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    transform: rotate(45deg);
+}
+
+.profile-image {
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.profile-image img {
+    width: 130px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 4px solid rgba(255,255,255,0.3);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.faculty-profile:hover .profile-image img {
+    transform: scale(1.05);
+}
+
+.profile-info {
+    position: relative;
+    z-index: 2;
+}
+
+.profile-info h3 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.designation {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+    font-weight: 500;
+}
+
+.department {
+    font-size: 1rem;
+    opacity: 0.8;
+    font-weight: 400;
+}
+
+/* Profile Details */
+.profile-details {
+    padding: 2.5rem;
+}
+
+.profile-details > div {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #e1f5fe;
+    border-radius: 15px;
+    border-left: 5px solid #00bcd4;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-details > div::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(to bottom, #00bcd4, #0097a7);
+    transition: width 0.3s ease;
+}
+
+.profile-details > div:hover::before {
+    width: 100%;
+    opacity: 0.05;
+}
+
+.profile-details h4 {
+    color: #006994;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.contact-info h4::before { content: "📧"; }
+.qualifications h4::before { content: "🎓"; }
+.current-subjects h4::before { content: "📚"; }
+.research-areas h4::before { content: "🔬"; }
+
+.profile-details p {
+    margin-bottom: 0.8rem;
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.profile-details ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.profile-details li {
+    background: white;
+    margin: 0.5rem 0;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    border-left: 4px solid #00bcd4;
+    color: #555;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-details li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, #00bcd4, #0097a7);
+    transition: width 0.3s ease;
+}
+
+.profile-details li:hover {
+    background: #00bcd4;
+    color: white;
+    transform: translateX(8px);
+    box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3);
+}
+
+.profile-details li:hover::before {
+    width: 100%;
+}
+
+/* Contact Links */
+.contact-info a {
+    color: #00bcd4;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.contact-info a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, #00bcd4, #0097a7);
+    transition: width 0.3s ease;
+}
+
+.contact-info a:hover::after {
+    width: 100%;
+}
+
+.contact-info a:hover {
+    color: #0097a7;
+}
+
+/* Special Styling for Different Sections */
+.research-areas {
+    border-left-color: #4fc3f7 !important;
+}
+
+.research-areas::before {
+    background: linear-gradient(to bottom, #4fc3f7, #29b6f6) !important;
+}
+
+.research-areas li {
+    border-left-color: #4fc3f7 !important;
+}
+
+.research-areas li::before {
+    background: linear-gradient(to bottom, #4fc3f7, #29b6f6) !important;
+}
+
+.research-areas li:hover {
+    background: #4fc3f7 !important;
+    box-shadow: 0 5px 15px rgba(79, 195, 247, 0.3) !important;
+}
+
+.current-subjects {
+    border-left-color: #81d4fa !important;
+}
+
+.current-subjects::before {
+    background: linear-gradient(to bottom, #81d4fa, #4fc3f7) !important;
+}
+
+.current-subjects li {
+    border-left-color: #81d4fa !important;
+}
+
+.current-subjects li::before {
+    background: linear-gradient(to bottom, #81d4fa, #4fc3f7) !important;
+}
+
+.current-subjects li:hover {
+    background: #81d4fa !important;
+    box-shadow: 0 5px 15px rgba(129, 212, 250, 0.3) !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .profiles-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem;
+    }
+
+    .profile-image img {
+        width: 110px;
+        height: 140px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header h2 {
+        font-size: 1.2rem;
+    }
+
+    #facultySearch {
+        width: 280px;
+        margin-bottom: 15px;
+        margin-right: 0;
+    }
+
+    button {
+        display: block;
+        margin: 8px auto;
+        width: 200px;
+    }
+
+    .theme-switcher {
+        position: relative;
+        top: 0;
+        right: 0;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+}

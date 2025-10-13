@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CST Department Faculty Profiles - IIEST</title>
+    <link rel="stylesheet" href="styles-default.css" id="theme-link">
 </head>
 <body>
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+        <button class="theme-btn" onclick="switchTheme()">🎨 Switch Theme</button>
+    </div>
     <header>
         <h1>Faculty Members - Computer Science & Technology Department</h1>
         <h2>Indian Institute of Engineering Science and Technology (IIEST)</h2>
@@ -24,7 +29,7 @@
             <div class="faculty-profile" id="abhik-mukherjee">
                 <div class="profile-header">
                     <div class="profile-image">
-                        <img src="images/abhik-mukherjee.jpg" alt="Dr. Abhik Mukherjee" width="200" height="250">
+                        <img src="images/cst_abhik_mukherjee.jpg" alt="Dr. Abhik Mukherjee" width="200" height="250">
                     </div>
                     <div class="profile-info">
                         <h3 class="faculty-name">Dr. Abhik Mukherjee</h3>
@@ -66,7 +71,7 @@
             <div class="faculty-profile" id="amit-biswas">
                 <div class="profile-header">
                     <div class="profile-image">
-                        <img src="images/amit-biswas.jpg" alt="Dr. Amit Biswas" width="200" height="250">
+                        <img src="images/amit biswas.jpg" alt="Dr. Amit Biswas" width="200" height="250">
                     </div>
                     <div class="profile-info">
                         <h3 class="faculty-name">Dr. Amit Biswas</h3>
@@ -107,7 +112,7 @@
             <div class="faculty-profile" id="apurba-sarkar">
                 <div class="profile-header">
                     <div class="profile-image">
-                        <img src="images/apurba-sarkar.jpg" alt="Dr. Apurba Sarkar" width="200" height="250">
+                        <img src="images/apurba_sarkar.jpg" alt="Dr. Apurba Sarkar" width="200" height="250">
                     </div>
                     <div class="profile-info">
                         <h3 class="faculty-name">Dr. Apurba Sarkar</h3>
@@ -149,7 +154,7 @@
             <div class="faculty-profile" id="ashish-kumar-layek">
                 <div class="profile-header">
                     <div class="profile-image">
-                        <img src="images/ashish-kumar-layek.jpg" alt="Dr. Ashish Kumar Layek" width="200" height="250">
+                        <img src="images/ashish layek_cst.jpg" alt="Dr. Ashish Kumar Layek" width="200" height="250">
                     </div>
                     <div class="profile-info">
                         <h3 class="faculty-name">Dr. Ashish Kumar Layek</h3>
@@ -191,7 +196,7 @@
             <div class="faculty-profile" id="asit-kumar-das">
                 <div class="profile-header">
                     <div class="profile-image">
-                        <img src="images/asit-kumar-das.jpg" alt="Dr. Asit Kumar Das" width="200" height="250">
+                        <img src="images/asit kumar das.png" alt="Dr. Asit Kumar Das" width="200" height="250">
                     </div>
                     <div class="profile-info">
                         <h3 class="faculty-name">Dr. Asit Kumar Das</h3>
@@ -234,7 +239,7 @@
             <div class="faculty-profile" id="biplab-k-sikdar">
                 <div class="profile-header">
                     <div class="profile-image">
-                        <img src="images/biplab-k-sikdar.jpg" alt="Dr. Biplab K. Sikdar" width="200" height="250">
+                        <img src="images/cst_biplab kumar sikdar.jpg" alt="Dr. Biplab K. Sikdar" width="200" height="250">
                     </div>
                     <div class="profile-info">
                         <h3 class="faculty-name">Dr. Biplab Kumar Sikdar</h3>
@@ -276,7 +281,7 @@
             <div class="faculty-profile" id="jaya-sil">
                 <div class="profile-header">
                     <div class="profile-image">
-                        <img src="images/jaya-sil.jpg" alt="Dr. Jaya Sil" width="200" height="250">
+                        <img src="images/cst-jaya-sil.jpg" alt="Dr. Jaya Sil" width="200" height="250">
                     </div>
                     <div class="profile-info">
                         <h3 class="faculty-name">Dr. Jaya Sil</h3>
@@ -319,7 +324,7 @@
             <div class="faculty-profile" id="malay-kule">
                 <div class="profile-header">
                     <div class="profile-image">
-                        <img src="images/malay-kule.jpg" alt="Dr. Malay Kule" width="200" height="250">
+                        <img src="images/cst-malay kule.jpg" alt="Dr. Malay Kule" width="200" height="250">
                     </div>
                     <div class="profile-info">
                         <h3 class="faculty-name">Dr. Malay Kule</h3>
@@ -361,6 +366,63 @@
     </main>
 
     <script>
+        // Theme switching functionality
+        const themes = [
+            'styles-default.css',
+            'styles-dark.css',
+            'styles-ocean.css',
+            'styles-sunset.css'
+        ];
+        
+        const themeNames = [
+            'Default',
+            'Dark',
+            'Ocean',
+            'Sunset'
+        ];
+        
+        let currentThemeIndex = 0;
+        
+        // Load saved theme from localStorage
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('selectedTheme');
+            if (savedTheme) {
+                const themeIndex = themes.indexOf(savedTheme);
+                if (themeIndex !== -1) {
+                    currentThemeIndex = themeIndex;
+                    document.getElementById('theme-link').href = savedTheme;
+                    updateThemeButton();
+                }
+            }
+        });
+        
+        function switchTheme() {
+            currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+            const newTheme = themes[currentThemeIndex];
+            
+            // Update the CSS link
+            document.getElementById('theme-link').href = newTheme;
+            
+            // Save to localStorage
+            localStorage.setItem('selectedTheme', newTheme);
+            
+            // Update button text
+            updateThemeButton();
+            
+            // Add a small animation effect
+            document.body.style.transition = 'opacity 0.3s ease';
+            document.body.style.opacity = '0.8';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 150);
+        }
+        
+        function updateThemeButton() {
+            const button = document.querySelector('.theme-btn');
+            const nextThemeIndex = (currentThemeIndex + 1) % themes.length;
+            button.textContent = `🎨 Switch to ${themeNames[nextThemeIndex]}`;
+        }
+
         function searchFaculty() {
             const searchTerm = document.getElementById('facultySearch').value.toLowerCase();
             const profiles = document.querySelectorAll('.faculty-profile');

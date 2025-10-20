@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyScript Adder</title>
+    <!-- Link to your local CSS file -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Link to Pyscript CSS -->
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+    <!-- Link to Pyscript JS -->
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+</head>
+<body>
+
+    <div class="card">
+        <div class="text-center">
+            <h1 class="title">Adding Two Numbers Using Pyscript</h1>
+            <p class="subtitle">Enter two numbers to calculate their sum using Python.</p>
+        </div>
+
+        <!-- Input fields for the numbers -->
+        <div class="input-group">
+            <label for="num1" class="label">First Number:</label>
+            <input type="number" id="num1" placeholder="e.g., 10" class="input-field">
+        </div>
+
+        <div class="input-group">
+            <label for="num2" class="label">Second Number:</label>
+            <input type="number" id="num2" placeholder="e.g., 25" class="input-field">
+        </div>
+
+        <!-- Button to trigger the addition -->
+        <button py-click="add_numbers" id="add-btn" class="button">
+            Add Numbers
+        </button>
+
+        <!-- Element to display the result -->
+        <div class="result-container">
+            <h2 class="result-title">Result:</h2>
+            <p id="result" class="result-text">-</p>
+        </div>
+    </div>
+
+    <!-- The Python code block -->
+    <py-script>
+        # Import necessary pyscript functions
+        from pyscript import document
+
+        def add_numbers(*args, **kwargs):
+            """
+            This function is called when the 'Add Numbers' button is clicked.
+            It reads the values from the input fields, adds them, and displays the result.
+            """
+            try:
+                # Get the input elements by their IDs
+                num1_element = document.querySelector("#num1")
+                num2_element = document.querySelector("#num2")
+
+                # Get the values and convert them to floats
+                # Use 0 if the input is empty to avoid errors
+                val1 = float(num1_element.value) if num1_element.value else 0
+                val2 = float(num2_element.value) if num2_element.value else 0
+
+                # Calculate the sum
+                total = val1 + val2
+
+                # Get the result element and update its text
+                result_element = document.querySelector("#result")
+                result_element.innerText = str(total)
+            except ValueError:
+                # Handle cases where the input is not a valid number
+                result_element = document.querySelector("#result")
+                result_element.innerText = "Invalid input"
+            except Exception as e:
+                # Handle other potential errors
+                print(f"An error occurred: {e}")
+                result_element = document.querySelector("#result")
+                result_element.innerText = "An error occurred"
+    </py-script>
+
+</body>
+</html>

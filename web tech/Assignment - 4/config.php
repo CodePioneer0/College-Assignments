@@ -5,10 +5,10 @@
  */
 
 // Database configuration
-define('DB_HOST', 'localhost');
+define('DB_HOST', 'localhost:3306');
 define('DB_NAME', 'ajax_project');
 define('DB_USER', 'root');
-define('DB_PASS', ''); // Default XAMPP MySQL password is empty
+define('DB_PASS', '007jamesbond'); // Default XAMPP MySQL password is unknown
 
 // PDO options for better error handling and security
 $options = [

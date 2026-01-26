@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 480px;
+            margin: 3rem auto;
+            padding: 1.5rem;
+            border: 1px solid #ccc;
+            border-radius: 12px;
+            background: #fafafa;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.7rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: #4a68f0;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #3956d5;
+        }
+    </style>
+</head>
+<body>
+    <h1>Enter Your Details</h1>
+    <form action="http://localhost:3000/submit" method="GET">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Jane Doe" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+
+        <label for="message">Message</label>
+        <input type="text" id="message" name="message" placeholder="Hello from the client!" required>
+
+        <button type="submit">Send to Server</button>
+    </form>
+</body>
+</html>
+

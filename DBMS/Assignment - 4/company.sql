@@ -45,8 +45,10 @@ from emp,dept
 where emp.deptno = dept.deptno
 group by DNAME,LOC
 union
-select DNAME,loc as LOCATION,count(EMPNO) as "NUMBER OF PEOPLE", ROUND(0,2) as "AVERAGE SALARY"
+select DNAME,loc as LOCATION,0 as "NUMBER OF PEOPLE", ROUND(0,2) as "AVERAGE SALARY"
 from emp,dept
 where dept.deptno not in (select distinct(deptno) from EMP)
 group by DNAME,LOC;
+
+
 

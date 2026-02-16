@@ -2,6 +2,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <sys/types.h>
 void reverse(char *s){
 	int n = strlen(s);
 	for(int i=0;i<n/2;i++){

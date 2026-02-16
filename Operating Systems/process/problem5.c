@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
-
+#include <sys/types.h>
 int main(int argc, char *argv[]){
     FILE *f = fopen("file.txt", "w");
     pid_t p;

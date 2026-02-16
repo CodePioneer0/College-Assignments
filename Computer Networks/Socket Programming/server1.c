@@ -12,7 +12,7 @@ int main() {
     struct sockaddr server_addr;
     struct sockaddr client_addr;
     unsigned short port;
-    unsigned int ip_addr = 0; // 0 represents INADDR_ANY
+    unsigned int ip_addr = 0;
     socklen_t addr_len = sizeof(client_addr);
 
     // 1. Create socket
@@ -24,12 +24,8 @@ int main() {
     // 2. Prepare the sockaddr structure manually
     memset(&server_addr, 0, sizeof(server_addr));
     server_addr.sa_family = AF_INET;
-
-    // Pack Port (sa_data[0] and sa_data[1])
     port = htons(PORT);
     memcpy(&server_addr.sa_data[0], &port, 2);
-
-    // Pack IP (sa_data[2] through sa_data[5])
     memcpy(&server_addr.sa_data[2], &ip_addr, 4); 
 
     // 3. Bind
@@ -56,7 +52,6 @@ int main() {
     char buffer[1024] = {0};
     ssize_t bytes_read = read(new_socket, buffer, sizeof(buffer) - 1);
     if(bytes_read > 0) {
-        // Ensure null termination for safety, though buffer was zero-init
         buffer[bytes_read] = '\0';
         printf("Received message from client: %s\n", buffer);
     }

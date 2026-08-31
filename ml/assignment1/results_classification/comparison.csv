@@ -1,0 +1,3 @@
+Classifier,Mean CV accuracy,Std
+Decision Tree (depth=3),0.8249074132195091,0.01491140901994006
+Naive Bayes (GaussianNB),0.7856506182913816,0.017687136683644408
